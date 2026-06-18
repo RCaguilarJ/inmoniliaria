@@ -15,6 +15,22 @@ export interface Development {
   areaSqM?: number;
   amenities?: string[];
   bannerText?: string;
+  gallery?: Array<{
+    src: string;
+    alt: string;
+    label?: string;
+  }>;
+  reelVideo?: {
+    src: string;
+    poster?: string;
+    label?: string;
+  };
+  contact?: {
+    phone?: string;
+    email?: string;
+    website?: string;
+  };
+  unitMix?: string[];
 }
 
 export interface Initiative {

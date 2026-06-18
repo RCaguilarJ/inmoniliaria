@@ -6,7 +6,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   Search, MapPin, Layers, Building, Eye, X, TreePine, ShieldAlert, Wifi, Info,
-  ShieldCheck, Video, Globe, FileText, Check, Lock, Sparkles, Play, Pause, RefreshCw, Volume2, HelpCircle
+  ShieldCheck, Video, Globe, FileText, Check, Lock, Sparkles, Play, Pause, RefreshCw, Volume2, HelpCircle,
+  Phone, Mail, ExternalLink, Image as ImageIcon
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { DEVELOPMENTS_DATA } from '../data';
@@ -27,10 +28,11 @@ interface DevelopmentsViewProps {
 // Custom interactive structures to represent details from corporate flyer
 interface UnitInventory {
   code: string;
-  bedrooms: number;
+  bedrooms?: number;
   area: number;
   price: string;
   status: 'Disponible' | 'Apartado' | 'Vendido';
+  meta?: string;
 }
 
 interface WhyBenefit {
@@ -68,6 +70,14 @@ const PROJECT_SHEET_FLAGS: Record<string, ProjectSheetFlags> = {
     website: true,
     progress: true,
     showUnit: true
+  },
+  'veq-countryclub': {
+    brochure: true,
+    website: true,
+    progress: true,
+    availability: true,
+    showUnit: true,
+    note: 'Ficha enriquecida con brochure comercial y registro audiovisual real entregado por el cliente en marzo de 2026.'
   },
   'veq-travessera': {
     immediateDelivery: true,
@@ -129,23 +139,23 @@ const CUSTOM_PROJECT_BENEFITS: Record<string, { benefits: WhyBenefit[]; progress
   },
   'veq-countryclub': {
     benefits: [
-      { title: 'Frente al Green del Golf Club', desc: 'Vistas panorámicas infinitas al emblemático e histórico campo de golf Country Club.', icon: 'TreePine' },
-      { title: 'Simulador Virtual Trackman', desc: 'Perfecciona tu swing sin salir de casa con el mejor equipamiento analítico de golf digital de Zapopan.', icon: 'Layers' },
-      { title: 'Doble Filtro de Acceso', desc: 'Máxima seguridad con circuito cerrado integral inteligente redundante y guardias dedicados.', icon: 'ShieldCheck' },
-      { title: 'Lanzamiento Exclusivo Preventa', desc: 'La más valiosa tasa de ganancia por plusvalía durante las fases cruciales de edificación.', icon: 'Sparkles' }
+      { title: 'Frente al Country Club', desc: 'La narrativa comercial del proyecto se ancla en una ubicación premium sobre Av. Américas y en su relación directa con el entorno Country Club.', icon: 'TreePine' },
+      { title: 'Tipologías residenciales claras', desc: 'El brochure comercial presenta configuraciones de 112.76 m², 158.23 m², 161.55 m² y 175.15 m² para una conversación de venta más precisa.', icon: 'Layers' },
+      { title: 'Amenidades verificables', desc: 'Alberca y terraza, kids zone, gimnasio, bodegas personales, business center y accesos controlados forman parte de la pieza comercial entregada.', icon: 'ShieldCheck' },
+      { title: 'Material real del proyecto', desc: 'El recorrido audiovisual y la galería interior aportan una percepción más humana y confiable que un render genérico.', icon: 'Sparkles' }
     ],
-    progress: 75,
+    progress: 82,
     milestones: [
-      { label: 'Estructura Principal del Rascacielos', status: 'completado', percentage: 100, date: 'Terminado' },
-      { label: 'Instalaciones Hidráulicas y Eléctricas', status: 'en-proceso', percentage: 85, date: 'Actual (Jun 2026)' },
-      { label: 'Mamposterías e Interiores de Lujo', status: 'en-proceso', percentage: 60, date: 'En Curso' },
-      { label: 'Amenidades de Country y Detalles', status: 'pendiente', percentage: 0, date: 'Octubre 2026' }
+      { label: 'Lobby e interiores documentados', status: 'completado', percentage: 100, date: 'Marzo 2026' },
+      { label: 'Áreas comunes y terraza registradas', status: 'completado', percentage: 100, date: 'Marzo 2026' },
+      { label: 'Material audiovisual comercial activo', status: 'completado', percentage: 100, date: 'Marzo 2026' },
+      { label: 'Seguimiento comercial y disponibilidad', status: 'en-proceso', percentage: 82, date: 'Actual' }
     ],
     units: [
-      { code: 'Depto 204', bedrooms: 2, area: 130, price: '$7,200,000 MXN', status: 'Disponible' },
-      { code: 'Depto 502', bedrooms: 2, area: 130, price: '$7,450,000 MXN', status: 'Disponible' },
-      { code: 'Depto 1101', bedrooms: 3, area: 185, price: '$11,900,000 MXN', status: 'Apartado' },
-      { code: 'Depto 2203 (Sky)', bedrooms: 3, area: 240, price: '$16,400,000 MXN', status: 'Disponible' }
+      { code: 'Tipo A', area: 112.76, price: 'Solicitar cotización', status: 'Disponible', meta: 'Tipología residencial' },
+      { code: 'Tipo B', area: 158.23, price: 'Solicitar cotización', status: 'Disponible', meta: 'Tipología residencial' },
+      { code: 'Tipo C', area: 161.55, price: 'Solicitar cotización', status: 'Disponible', meta: 'Tipología residencial' },
+      { code: 'Tipo D', area: 175.15, price: 'Solicitar cotización', status: 'Disponible', meta: 'Tipología residencial' }
     ]
   },
   'veq-travessera': {
@@ -242,7 +252,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
   const [selectedUnit, setSelectedUnit] = useState<string | null>(null);
   const [customMessage, setCustomMessage] = useState<string>('');
   const [isPlayingVideo, setIsPlayingVideo] = useState<boolean>(true);
-  const [videoProgress, setVideoProgress] = useState<number>(35); // simulated drone position percentage
+  const projectVideoRef = useRef<HTMLVideoElement | null>(null);
 
   // Sync with home map click redirection if helpful
   useEffect(() => {
@@ -258,9 +268,23 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
       setSelectedUnit(null);
       setCustomMessage('');
       setIsPlayingVideo(true);
-      setVideoProgress(35);
     }
   }, [selectedDevelopment]);
+
+  useEffect(() => {
+    const video = projectVideoRef.current;
+
+    if (!video) return;
+
+    if (isPlayingVideo) {
+      video.play().catch(() => {
+        setIsPlayingVideo(false);
+      });
+      return;
+    }
+
+    video.pause();
+  }, [isPlayingVideo, selectedDevelopment, activeModalTab]);
 
   const cities = ['TODAS', 'CANCÚN', 'GUADALAJARA', 'LEÓN', 'LOS CABOS', 'NUEVO VALLARTA', 'TIJUANA', 'TULUM'];
   const statuses = ['TODOS', 'CONCLUIDOS', 'EN DESARROLLO', 'PRÓXIMO'];
@@ -290,6 +314,9 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
   };
 
   const getProjectSheetFlags = (id: string): ProjectSheetFlags => PROJECT_SHEET_FLAGS[id] || {};
+  const selectedGallery = selectedDevelopment?.gallery ?? [];
+  const featuredGallery = selectedGallery.slice(0, 3);
+  const secondaryGallery = selectedGallery.slice(3, 7);
 
   return (
     <div className="relative w-full">
@@ -591,16 +618,53 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                       animate={{ opacity: 1, y: 0 }}
                       className="space-y-6"
                     >
-                      <div className="relative rounded-xl overflow-hidden shadow-lg aspect-video">
-                        <img
-                          src={selectedDevelopment.image}
-                          alt={selectedDevelopment.name}
-                          className="w-full h-full object-cover"
-                        />
-                        <div className="absolute right-4 bottom-4 rounded bg-black/75 px-3 py-1 font-mono text-xs text-[#DCE7EF] uppercase tracking-wider border border-white/5">
-                          {selectedDevelopment.city}
+                      {featuredGallery.length > 0 ? (
+                        <div className="grid gap-3 md:grid-cols-12">
+                          <div className="relative overflow-hidden rounded-[26px] shadow-lg md:col-span-7">
+                            <img
+                              src={featuredGallery[0].src}
+                              alt={featuredGallery[0].alt}
+                              className="h-full min-h-[280px] w-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+                            <div className="absolute bottom-4 left-4 rounded-full bg-black/65 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-white">
+                              {featuredGallery[0].label ?? selectedDevelopment.city}
+                            </div>
+                            <div className="absolute right-4 top-4 rounded-full bg-white/95 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[#4F6F86] shadow-sm">
+                              {selectedDevelopment.city}
+                            </div>
+                          </div>
+
+                          <div className="grid gap-3 md:col-span-5">
+                            {featuredGallery.slice(1).map((item) => (
+                              <div key={item.src} className="relative overflow-hidden rounded-[22px] shadow-lg">
+                                <img
+                                  src={item.src}
+                                  alt={item.alt}
+                                  className="h-[138px] w-full object-cover"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+                                {item.label && (
+                                  <div className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-white">
+                                    {item.label}
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                      </div>
+                      ) : (
+                        <div className="relative aspect-video overflow-hidden rounded-xl shadow-lg">
+                          <img
+                            src={selectedDevelopment.image}
+                            alt={selectedDevelopment.name}
+                            className="h-full w-full object-cover"
+                          />
+                          <div className="absolute right-4 bottom-4 rounded bg-black/75 px-3 py-1 font-mono text-xs uppercase tracking-wider text-[#DCE7EF] border border-white/5">
+                            {selectedDevelopment.city}
+                          </div>
+                        </div>
+                      )}
 
                       <div className="space-y-2">
                         <div className="flex items-baseline gap-3">
@@ -650,20 +714,86 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                         </p>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-4 rounded-xl bg-[#F3F7FA] p-4.5 border border-stone-200/85">
-                        {selectedDevelopment.units && (
-                          <div>
-                            <p className="text-xs text-stone-500 font-mono uppercase tracking-wider">Unidades Totales</p>
-                            <p className="text-lg font-bold text-[#4F6F86] mt-0.5">{selectedDevelopment.units} Unidades</p>
+                      {(selectedDevelopment.units || selectedDevelopment.areaSqM) && (
+                        <div className="grid grid-cols-2 gap-4 rounded-xl bg-[#F3F7FA] p-4.5 border border-stone-200/85">
+                          {selectedDevelopment.units && (
+                            <div>
+                              <p className="text-xs text-stone-500 font-mono uppercase tracking-wider">Unidades Totales</p>
+                              <p className="text-lg font-bold text-[#4F6F86] mt-0.5">{selectedDevelopment.units} Unidades</p>
+                            </div>
+                          )}
+                          {selectedDevelopment.areaSqM && (
+                            <div>
+                              <p className="text-xs text-stone-500 font-mono uppercase tracking-wider">Superficie de Obra</p>
+                              <p className="text-lg font-bold text-[#4F6F86] mt-0.5">{selectedDevelopment.areaSqM.toLocaleString()} m² de construcción</p>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {(selectedDevelopment.unitMix?.length || selectedDevelopment.contact) && (
+                        <div className="rounded-[24px] border border-stone-200 bg-white p-5 shadow-sm">
+                          <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+                            {selectedDevelopment.unitMix?.length ? (
+                              <div className="space-y-3">
+                                <div className="flex items-center gap-2">
+                                  <span className="section-icon-chip h-10 w-10">
+                                    <Layers className="h-[18px] w-[18px]" />
+                                  </span>
+                                  <div>
+                                    <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-stone-500">Superficies publicadas</p>
+                                    <h5 className="font-heading text-lg font-bold text-[#4F6F86]">Tipologías del brochure</h5>
+                                  </div>
+                                </div>
+                                <div className="flex flex-wrap gap-2">
+                                  {selectedDevelopment.unitMix.map((size) => (
+                                    <span
+                                      key={size}
+                                      className="rounded-full border border-[#6F899D]/18 bg-[#6F899D]/8 px-3 py-1.5 font-mono text-[11px] font-semibold text-[#4F6F86]"
+                                    >
+                                      {size}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+                            ) : null}
+
+                            {selectedDevelopment.contact ? (
+                              <div className="grid gap-2 text-sm text-stone-600 sm:grid-cols-2">
+                                {selectedDevelopment.contact.phone && (
+                                  <a
+                                    href={`tel:${selectedDevelopment.contact.phone.replace(/\D/g, '')}`}
+                                    className="flex items-center gap-2 rounded-xl border border-stone-200 bg-stone-50 px-3 py-2 transition-colors hover:border-[#6F899D]/25 hover:text-[#4F6F86]"
+                                  >
+                                    <Phone className="h-4 w-4 text-[#C9A96E]" />
+                                    <span>{selectedDevelopment.contact.phone}</span>
+                                  </a>
+                                )}
+                                {selectedDevelopment.contact.email && (
+                                  <a
+                                    href={`mailto:${selectedDevelopment.contact.email}`}
+                                    className="flex items-center gap-2 rounded-xl border border-stone-200 bg-stone-50 px-3 py-2 transition-colors hover:border-[#6F899D]/25 hover:text-[#4F6F86]"
+                                  >
+                                    <Mail className="h-4 w-4 text-[#C9A96E]" />
+                                    <span>{selectedDevelopment.contact.email}</span>
+                                  </a>
+                                )}
+                                {selectedDevelopment.contact.website && (
+                                  <a
+                                    href={`https://${selectedDevelopment.contact.website}`}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="flex items-center gap-2 rounded-xl border border-stone-200 bg-stone-50 px-3 py-2 transition-colors hover:border-[#6F899D]/25 hover:text-[#4F6F86] sm:col-span-2"
+                                  >
+                                    <ExternalLink className="h-4 w-4 text-[#C9A96E]" />
+                                    <span>{selectedDevelopment.contact.website}</span>
+                                  </a>
+                                )}
+                              </div>
+                            ) : null}
                           </div>
-                        )}
-                        {selectedDevelopment.areaSqM && (
-                          <div>
-                            <p className="text-xs text-stone-500 font-mono uppercase tracking-wider">Superficie de Obra</p>
-                            <p className="text-lg font-bold text-[#4F6F86] mt-0.5">{selectedDevelopment.areaSqM.toLocaleString()} m² de construcción</p>
-                          </div>
-                        )}
-                      </div>
+                        </div>
+                      )}
 
                       {selectedDevelopment.amenities && (
                         <div className="space-y-3">
@@ -674,6 +804,39 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                                 <span className="h-1.5 w-1.5 rounded-full bg-[#6F899D]" />
                                 {amenity}
                               </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {secondaryGallery.length > 0 && (
+                        <div className="space-y-3">
+                          <div className="flex items-center gap-2">
+                            <span className="section-icon-chip h-10 w-10">
+                              <ImageIcon className="h-[18px] w-[18px]" />
+                            </span>
+                            <div>
+                              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-stone-500">Selección visual</p>
+                              <h5 className="font-heading text-lg font-bold text-[#4F6F86]">Galería real del proyecto</h5>
+                            </div>
+                          </div>
+
+                          <div className="grid gap-3 sm:grid-cols-2">
+                            {secondaryGallery.map((item) => (
+                              <figure key={item.src} className="group overflow-hidden rounded-[22px] border border-stone-200 bg-white shadow-sm">
+                                <div className="overflow-hidden">
+                                  <img
+                                    src={item.src}
+                                    alt={item.alt}
+                                    className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                                  />
+                                </div>
+                                {item.label && (
+                                  <figcaption className="px-4 py-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-stone-500">
+                                    {item.label}
+                                  </figcaption>
+                                )}
+                              </figure>
                             ))}
                           </div>
                         </div>
@@ -731,67 +894,73 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                         <p className="text-stone-600 text-xs text-light">Mantenemos transparencia absoluta en la bitácora física de cada uno de nuestros complejos residenciales.</p>
                       </div>
 
-                      {/* SIMULATED LIVE DRONE / CAMERA FEED FOR COUNTRY CLUB DEVELOPMENTS */}
-                      {selectedDevelopment.id === 'veq-countryclub' ? (
-                        <div className="relative rounded-xl border border-[#4F6F86]/15 bg-black overflow-hidden shadow-2xl">
-                          <div className="aspect-video bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-stone-900 to-black flex flex-col items-center justify-center p-6 text-center group">
-                            
-                            {/* HUD Overlays (Drone Telemetry) */}
-                            <div className="absolute inset-x-4 top-4 flex justify-between items-start text-[9px] font-mono text-emerald-400 pointer-events-none select-none">
-                              <div className="space-y-1 bg-black/60 p-2 rounded backdrop-blur-sm border border-emerald-500/10">
-                                <span className="flex items-center gap-1.5 font-bold uppercase tracking-wider text-emerald-400">
-                                  <span className={`h-2 w-2 rounded-full bg-emerald-500 ${isPlayingVideo ? 'animate-ping' : ''}`} />
-                                  â— LIVE DRONE FEED
-                                </span>
-                                <p>CAM: MA-04 4K HLG</p>
-                                <p>ALT: 114m AGL</p>
-                                <p>SPD: 3.2 m/s</p>
+                      {selectedDevelopment.reelVideo ? (
+                        <div className="grid gap-4 lg:grid-cols-[minmax(0,1.35fr)_280px]">
+                          <div className="relative overflow-hidden rounded-[26px] border border-[#4F6F86]/15 bg-black shadow-2xl">
+                            <video
+                              ref={projectVideoRef}
+                              src={selectedDevelopment.reelVideo.src}
+                              poster={selectedDevelopment.reelVideo.poster}
+                              className="aspect-video h-full w-full object-cover"
+                              muted
+                              loop
+                              playsInline
+                              preload="none"
+                              controls
+                              onPlay={() => setIsPlayingVideo(true)}
+                              onPause={() => setIsPlayingVideo(false)}
+                            />
+
+                            <div className="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-between p-4">
+                              <div className="rounded-full bg-black/65 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-white backdrop-blur-sm">
+                                {selectedDevelopment.reelVideo.label ?? 'Registro real del proyecto'}
                               </div>
-                              <div className="space-y-0.5 text-right bg-black/60 p-2 rounded backdrop-blur-sm border border-emerald-500/10">
-                                <p>LAT: 20.6736° N</p>
-                                <p>LON: 103.3444° W</p>
-                                <p>REC TIM: 03:24:12</p>
-                                <p>BATTERY: 84%</p>
+                              <div className="rounded-full bg-white/95 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[#4F6F86] shadow-sm">
+                                Material del cliente
                               </div>
                             </div>
 
-                            {/* Simulated Video Looping graphics */}
-                            {isPlayingVideo ? (
-                              <div className="space-y-4">
-                                <div className="relative">
-                                  <RefreshCw className="h-12 w-12 text-[#6F899D] animate-spin stroke-1" />
-                                  <span className="absolute inset-0 flex items-center justify-center text-[10px] font-bold font-mono text-white">4K</span>
-                                </div>
-                                <div className="space-y-1">
-                                  <p className="text-xs font-semibold text-stone-200">Transmitiendo avances de la propiedad registrada en comercialización...</p>
-                                  <p className="text-[10px] text-stone-500 font-mono">Dron automático barriendo estructura superior y acabados húmedos</p>
-                                </div>
-                              </div>
-                            ) : (
-                              <div className="space-y-3">
-                                <Play className="h-12 w-12 text-stone-600 hover:text-white transition-colors cursor-pointer" onClick={() => setIsPlayingVideo(true)} />
-                                <p className="text-xs text-stone-400">Video pausado. Presiona reproducir para reactivar el stream del dron.</p>
-                              </div>
-                            )}
-
-                            {/* Video Control Bar */}
-                            <div className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded bg-black/85 p-2 backdrop-blur border border-white/5">
+                            <div className="absolute inset-x-0 bottom-0 flex items-center justify-between border-t border-white/10 bg-black/72 px-4 py-3 text-white backdrop-blur-sm">
                               <div className="flex items-center gap-2">
-                                <button 
+                                <button
                                   onClick={() => setIsPlayingVideo(!isPlayingVideo)}
-                                  className="text-stone-300 hover:text-white rounded bg-white/5 p-1 text-xs"
+                                  className="rounded-full border border-white/15 bg-white/8 p-2 text-white transition-colors hover:bg-white/14"
+                                  type="button"
                                 >
-                                  {isPlayingVideo ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
+                                  {isPlayingVideo ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
                                 </button>
-                                <span className="font-mono text-[9px] text-stone-500">CANAL LUXENT_property_feed.mov</span>
-                              </div>
-                              <div className="flex items-center gap-3">
-                                <div className="flex items-center gap-1.5 text-[9px] font-mono text-[#6F899D] uppercase">
-                                  <Volume2 className="h-3.5 w-3.5" />
-                                  <span>Audio de Obra</span>
+                                <div>
+                                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-[#DCE7EF]">Recorrido real</p>
+                                  <p className="text-[11px] text-stone-300">Se incorporó el video entregado por Luxent para humanizar la ficha.</p>
                                 </div>
-                                <span className="inline-block rounded bg-red-500/10 px-2 py-0.5 text-[8px] font-bold text-red-400 uppercase tracking-wider">MARZO 2026 - EN DESARROLLO</span>
                               </div>
+                              <div className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.22em] text-stone-300 md:flex">
+                                <Volume2 className="h-3.5 w-3.5 text-[#C9A96E]" />
+                                Audio original
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="space-y-4">
+                            <div className="rounded-[22px] border border-stone-200 bg-white p-4 shadow-sm">
+                              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-stone-500">Registro editorial</p>
+                              <h5 className="mt-2 font-heading text-lg font-bold text-[#4F6F86]">Material visual con carácter real</h5>
+                              <p className="mt-2 text-sm leading-relaxed text-stone-600">
+                                En lugar de una simulación genérica, la ficha ahora utiliza evidencia visual entregada por el cliente: lobby, interiores, terraza y recorrido audiovisual.
+                              </p>
+                            </div>
+
+                            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                              {featuredGallery.slice(0, 2).map((item) => (
+                                <figure key={item.src} className="overflow-hidden rounded-[20px] border border-stone-200 bg-white shadow-sm">
+                                  <img src={item.src} alt={item.alt} className="h-32 w-full object-cover" />
+                                  {item.label && (
+                                    <figcaption className="px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-stone-500">
+                                      {item.label}
+                                    </figcaption>
+                                  )}
+                                </figure>
+                              ))}
                             </div>
                           </div>
                         </div>
@@ -908,9 +1077,11 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                               if (!isAvailable) return;
                               setSelectedUnit(unit.code);
                               
-                              const bedroomsText = unit.bedrooms > 0 
-                                ? `${unit.bedrooms} recám.` 
-                                : 'lote premium';
+                              const bedroomsText = unit.meta
+                                ? unit.meta.toLowerCase()
+                                : unit.bedrooms && unit.bedrooms > 0
+                                ? `${unit.bedrooms} recám.`
+                                : 'tipología residencial';
                               
                               setCustomMessage(
                                 `Hola, me interesa adquirir y recibir más detalles sobre la unidad DISPONIBLE: ${unit.code} (${bedroomsText}, ${unit.area} m²) del desarrollo vertical "${selectedDevelopment.name}". Por favor envíenme costos de escrituración, esquemas de pago preferenciales y opciones de preventa. Gracias.`
@@ -933,7 +1104,12 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                                 <div className="space-y-1">
                                   <p className="text-sm font-bold text-[#4F6F86] font-heading">{unit.code}</p>
                                   <p className="text-[10px] text-stone-600 font-mono uppercase tracking-wider">
-                                    {unit.area} m²{unit.bedrooms > 0 ? ` â€¢ ${unit.bedrooms} Recámaras` : ' â€¢ Gated Lot'}
+                                    {unit.area} m²
+                                    {unit.meta
+                                      ? ` • ${unit.meta}`
+                                      : unit.bedrooms && unit.bedrooms > 0
+                                      ? ` • ${unit.bedrooms} Recámaras`
+                                      : ' • Tipología residencial'}
                                   </p>
                                 </div>
                                 <div className="text-right space-y-1">
@@ -944,7 +1120,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                                       ? 'bg-yellow-500/10 border border-yellow-500/20 text-yellow-600 font-bold'
                                       : 'bg-stone-100 border border-stone-200 text-stone-500'
                                   }`}>
-                                    {isSelected ? 'âœ” Seleccionado' : unit.status}
+                                    {isSelected ? '✓ Seleccionado' : unit.status}
                                   </span>
                                   {isAvailable && (
                                     <p className="text-xs font-bold text-stone-850 mt-1 font-mono">{unit.price}</p>

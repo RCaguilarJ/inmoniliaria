@@ -10,6 +10,13 @@ import veqCountryClubImage from './assets/images/veq_countryclub_1781741180731.j
 import veqTravesseraImage from './assets/images/veq_travessera_1781741204206.jpg';
 import veqPaseoDeGraciaImage from './assets/images/veq_paseodegracia_1781741234147.jpg';
 import veqDevelopmentThumbImage from './assets/images/veq_development_thumb_1781739550936.jpg';
+import countryClubLobbyChandelierWide from './assets/images/countryclub-real/lobby-chandelier-wide.jpg';
+import countryClubLobbyLounge from './assets/images/countryclub-real/lobby-lounge.jpg';
+import countryClubPoolDeck from './assets/images/countryclub-real/pool-deck.jpg';
+import countryClubLivingRoom from './assets/images/countryclub-real/living-room.jpg';
+import countryClubBalconyView from './assets/images/countryclub-real/balcony-view.jpg';
+import countryClubWalkInCloset from './assets/images/countryclub-real/walk-in-closet.jpg';
+import countryClubBedroomSuite from './assets/images/countryclub-real/bedroom-suite.jpg';
 
 export const DEVELOPMENTS_DATA: Development[] = [
   {
@@ -43,13 +50,59 @@ export const DEVELOPMENTS_DATA: Development[] = [
     name: 'Condominios Country Club',
     city: 'Guadalajara',
     status: 'En Desarrollo',
-    description: 'Proyecto residencial premium dentro del corredor Country Club, con vistas abiertas, amenidades de alto nivel y enfoque patrimonial.',
-    address: 'Vía Providencia / Country Club, Guadalajara, Jal.',
-    image: veqCountryClubImage,
-    units: 145,
-    areaSqM: 26500,
-    amenities: ['Panoramic Golf View', 'Alberca templada', 'Simulador de golf virtual', 'Sauna & Vapor', 'Cigar Room', 'Conserjería 24/7'],
-    bannerText: 'La vida frente al Green.'
+    description: 'Proyecto residencial premium frente al Country Club de Guadalajara, con tipologías residenciales de 112.76 m² a 175.15 m², amenidades integradas y una experiencia comercial respaldada por material real del proyecto.',
+    address: 'Av. Américas 1930 Int. L3, Col. Country Club, Guadalajara, Jal.',
+    image: countryClubLobbyChandelierWide,
+    amenities: ['Alberca y terraza', 'Kids zone', 'Gimnasio', 'Bodegas personales', 'Storage & delivery', 'Salas de juegos & sports bar', 'Business center', 'Accesos controlados', 'Zona WiFi'],
+    bannerText: 'Frente al Country Club.',
+    unitMix: ['112.76 m²', '158.23 m²', '161.55 m²', '175.15 m²'],
+    contact: {
+      phone: '(33) 1142 9932',
+      email: 'ventas@luxent.properties',
+      website: 'www.condominioscountryclub.com',
+    },
+    reelVideo: {
+      src: '/videos/countryclub/country-club-reel-marzo-2026.mp4',
+      poster: countryClubBalconyView,
+      label: 'Registro audiovisual real · Marzo 2026',
+    },
+    gallery: [
+      {
+        src: countryClubLobbyChandelierWide,
+        alt: 'Lobby de doble altura en Condominios Country Club',
+        label: 'Lobby',
+      },
+      {
+        src: countryClubLobbyLounge,
+        alt: 'Sala lounge en Condominios Country Club',
+        label: 'Lounge',
+      },
+      {
+        src: countryClubPoolDeck,
+        alt: 'Alberca y terraza en Condominios Country Club',
+        label: 'Alberca y terraza',
+      },
+      {
+        src: countryClubLivingRoom,
+        alt: 'Área social interior en Condominios Country Club',
+        label: 'Área social',
+      },
+      {
+        src: countryClubBalconyView,
+        alt: 'Vista desde balcón en Condominios Country Club',
+        label: 'Vista al green',
+      },
+      {
+        src: countryClubWalkInCloset,
+        alt: 'Walk-in closet en Condominios Country Club',
+        label: 'Vestidor',
+      },
+      {
+        src: countryClubBedroomSuite,
+        alt: 'Recámara principal en Condominios Country Club',
+        label: 'Recámara principal',
+      },
+    ],
   },
   {
     id: 'veq-travessera',
