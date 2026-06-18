@@ -9,7 +9,7 @@ import { BLOG_DATA, DEVELOPMENTS_DATA } from '../data';
 import ContactSection from './ContactSection';
 import EditorialIcon, { EditorialIconName } from './EditorialIcon';
 import SectionDivider from './SectionDivider';
-import heroImage from '../assets/images/veq_hero_towers_1781739523649.jpg';
+import heroImage from '../assets/images/TDP Post foto 1 (1).png';
 import contactImage from '../assets/images/veq_jack_levy_1781739538027.jpg';
 
 interface HomeViewProps {
