@@ -12,6 +12,7 @@ import NosotrosView from './components/NosotrosView';
 import DevelopmentsView from './components/DevelopmentsView';
 import AlianzasView from './components/AlianzasView';
 import BlogView from './components/BlogView';
+import FloatingDemoActions from './components/FloatingDemoActions';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('inicio');
@@ -29,6 +30,7 @@ export default function App() {
     <div className="flex min-h-screen flex-col bg-[#F3F7FA] text-stone-900 selection:bg-[#6F899D] selection:text-white">
       {/* GLOBAL HEADER BAR */}
       <Header activeTab={activeTab} setActiveTab={setActiveTab} />
+      <FloatingDemoActions />
 
       {/* MAIN SCREEN ROUTING */}
       <main className="flex-grow">

@@ -901,12 +901,12 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                               ref={projectVideoRef}
                               src={selectedDevelopment.reelVideo.src}
                               poster={selectedDevelopment.reelVideo.poster}
-                              className="aspect-video h-full w-full object-cover"
+                              className="aspect-video h-full w-full cursor-pointer object-cover"
                               muted
                               loop
                               playsInline
                               preload="none"
-                              controls
+                              onClick={() => setIsPlayingVideo(!isPlayingVideo)}
                               onPlay={() => setIsPlayingVideo(true)}
                               onPause={() => setIsPlayingVideo(false)}
                             />
