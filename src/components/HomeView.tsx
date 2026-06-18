@@ -79,7 +79,7 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
             <button
               onClick={() => onNavigate('desarrollos')}
               id="btn-hero-properties"
-              className="group flex items-center justify-center gap-2 rounded-md border border-[#DCE7EF]/30 bg-[#6F899D] px-7 py-3 text-xs font-bold uppercase tracking-[0.22em] text-white transition-all hover:bg-[#4F6F86]"
+              className="editorial-btn-primary group flex items-center justify-center gap-2 rounded-md px-7 py-3 text-xs font-bold uppercase tracking-[0.22em] text-white transition-all hover:bg-[#4F6F86]"
             >
               Ver propiedades
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -87,7 +87,7 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
             <button
               onClick={() => onNavigate('alianzas')}
               id="btn-hero-services"
-              className="rounded-md border border-white/25 bg-white/8 px-7 py-3 text-xs font-bold uppercase tracking-[0.22em] text-white transition-all hover:bg-white/15"
+              className="editorial-btn-ghost rounded-md px-7 py-3 text-xs font-bold uppercase tracking-[0.22em] text-white transition-all hover:bg-white/15"
             >
               Conocer servicios
             </button>
@@ -114,7 +114,7 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
               <article
                 key={development.id}
                 onClick={() => onNavigate('desarrollos')}
-                className="group cursor-pointer overflow-hidden rounded-[4px] border border-white/10 bg-white/5 backdrop-blur-sm transition-all hover:border-[#DCE7EF]/35 hover:shadow-[0_20px_40px_rgba(180,140,80,0.15)]"
+                className="editorial-media-frame group cursor-pointer overflow-hidden rounded-[4px] bg-white/5 backdrop-blur-sm transition-all hover:border-[#DCE7EF]/35 hover:shadow-[0_20px_40px_rgba(180,140,80,0.15)]"
               >
                 <div className="relative aspect-[4/5] overflow-hidden">
                   <img
@@ -140,7 +140,7 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
       </section>
 
       <section className="-mt-8 px-6 pb-24">
-        <div className="mx-auto max-w-7xl rounded-[36px] border border-[#D4DEE6] bg-white px-6 py-14 shadow-[0_24px_70px_rgba(79,111,134,0.08)] md:px-10 lg:px-14">
+        <div className="editorial-panel mx-auto max-w-7xl rounded-[36px] px-6 py-14 md:px-10 lg:px-14">
           <div className="text-center">
             <span className="editorial-kicker font-mono text-[#31485C]/55">Qué nos diferencia</span>
             <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight text-[#31485C] sm:text-4xl">
@@ -156,7 +156,7 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {differentiators.map((item) => {
               return (
-                <div key={item.title} className="rounded-[24px] border border-[#D4DEE6] bg-[#F8FBFD] p-6">
+                <div key={item.title} className="editorial-card rounded-[24px] p-6">
                   <EditorialIcon name={item.icon} />
                   <h3 className="mt-5 font-heading text-xl font-bold text-[#31485C]">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-stone-600">{item.description}</p>
@@ -172,7 +172,7 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
               <p className="mt-4 text-sm leading-relaxed text-stone-600">
                 Luxent integra comercialización inmobiliaria, consultoría patrimonial, diseño visual y gestión digital para acompañar cada propiedad desde su salida al mercado hasta la postventa.
               </p>
-              <div className="mt-8 rounded-[28px] bg-veq-dark-pattern p-6 text-white">
+              <div className="editorial-dark-card mt-8 rounded-[28px] p-6 text-white">
                 <div className="inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.28em] text-[#DCE7EF]">
                   Infraestructura Luxent
                 </div>
@@ -184,7 +184,7 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
 
             <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
               {tools.map((tool) => (
-                <div key={tool} className="rounded-[22px] border border-[#D4DEE6] bg-white p-5 shadow-sm">
+                <div key={tool} className="editorial-card rounded-[22px] p-5">
                   <div className="flex items-start gap-3">
                     <span className="section-icon-chip mt-0.5">
                       <FileText className="h-[18px] w-[18px]" />
@@ -210,7 +210,7 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
             <button
               onClick={() => onNavigate('blog')}
               id="btn-goto-blog"
-              className="group inline-flex items-center gap-2 self-start rounded-md border border-white/15 px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-[#DCE7EF] transition-colors hover:text-white"
+              className="editorial-btn-ghost group inline-flex items-center gap-2 self-start rounded-md px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-[#DCE7EF] transition-colors hover:text-white"
             >
               Ver todos
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -224,14 +224,14 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
               <article
                 key={article.id}
                 onClick={() => onNavigate('blog')}
-                className="group cursor-pointer overflow-hidden rounded-[26px] border border-white/10 bg-white/5 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-[#DCE7EF]/25"
+                className="editorial-media-frame group cursor-pointer overflow-hidden rounded-[8px] bg-white/5 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-[#DCE7EF]/25 hover:shadow-[0_20px_40px_rgba(180,140,80,0.15)]"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <img
                     src={article.image}
                     alt={article.title}
                     referrerPolicy="no-referrer"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                   <div className="absolute right-4 top-4 rounded-full bg-black/55 px-3 py-1 font-mono text-[9px] font-bold uppercase tracking-[0.24em] text-white">

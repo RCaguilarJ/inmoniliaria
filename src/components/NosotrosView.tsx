@@ -57,7 +57,7 @@ export default function NosotrosView() {
       />
 
       <section className="bg-veq-dark-pattern px-6 py-20 text-white">
-        <div className="mx-auto grid max-w-7xl overflow-hidden rounded-[34px] border border-white/10 bg-black/10 lg:grid-cols-2">
+        <div className="editorial-media-frame mx-auto grid max-w-7xl overflow-hidden rounded-[34px] border-white/10 bg-black/10 lg:grid-cols-2">
           <div className="p-8 md:p-12">
             <span className="editorial-kicker font-mono text-[#DCE7EF]/55">Perfil Luxent</span>
             <h2 className="mt-4 font-heading text-4xl font-bold tracking-tight text-white">Asesoría integral con base comercial y <span className="italic">digital</span></h2>
@@ -86,7 +86,7 @@ export default function NosotrosView() {
       </section>
 
       <section className="-mt-8 px-6 pb-24">
-        <div className="mx-auto max-w-7xl rounded-[36px] border border-[#D4DEE6] bg-white px-6 py-14 shadow-[0_24px_70px_rgba(79,111,134,0.08)] md:px-10 lg:px-14">
+        <div className="editorial-panel mx-auto max-w-7xl rounded-[36px] px-6 py-14 md:px-10 lg:px-14">
           <div className="text-center">
             <span className="editorial-kicker font-mono text-[#31485C]/55">Qué nos diferencia</span>
             <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight text-[#31485C] sm:text-4xl">
@@ -99,7 +99,7 @@ export default function NosotrosView() {
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {differentiators.map((item) => {
               return (
-                <div key={item.title} className="rounded-[24px] border border-[#D4DEE6] bg-[#F8FBFD] p-6">
+                <div key={item.title} className="editorial-card rounded-[24px] p-6">
                   <EditorialIcon name={item.icon} />
                   <h3 className="mt-5 font-heading text-xl font-bold text-[#31485C]">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-stone-600">{item.description}</p>
@@ -116,7 +116,7 @@ export default function NosotrosView() {
 
             <div className="mt-10 grid gap-6 lg:grid-cols-3">
               {INITIATIVES_DATA.map((initiative) => (
-                <article key={initiative.id} className="overflow-hidden rounded-[28px] border border-[#D4DEE6] bg-white shadow-sm">
+                <article key={initiative.id} className="editorial-media-frame overflow-hidden rounded-[28px] bg-white">
                   <div className="grid md:grid-cols-[1.15fr_1fr] lg:grid-cols-1">
                     <img
                       src={initiative.image}
@@ -124,7 +124,7 @@ export default function NosotrosView() {
                       className="h-full min-h-[260px] w-full object-cover"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="bg-veq-dark-pattern p-6 text-white">
+                    <div className="editorial-dark-card border-0 bg-veq-dark-pattern p-6 text-white">
                       <h4 className="font-heading text-3xl font-bold">{initiative.title}</h4>
                       <p className="mt-3 text-sm leading-relaxed text-stone-200">{initiative.description}</p>
                       <p className="mt-4 border-t border-white/10 pt-4 text-xs leading-relaxed text-[#DCE7EF]">{initiative.impact}</p>
@@ -135,7 +135,7 @@ export default function NosotrosView() {
             </div>
 
             <div className="mt-12 grid gap-6 lg:grid-cols-2">
-              <div className="rounded-[24px] border border-[#D4DEE6] bg-[#F8FBFD] p-6">
+              <div className="editorial-card rounded-[24px] p-6">
                 <div className="flex items-start gap-3">
                   <FileText className="mt-0.5 h-5 w-5 text-[#6F899D]" />
                   <div>
@@ -147,7 +147,7 @@ export default function NosotrosView() {
                 </div>
               </div>
 
-              <div className="rounded-[24px] border border-[#D4DEE6] bg-[#F8FBFD] p-6">
+              <div className="editorial-card rounded-[24px] p-6">
                 <div className="flex items-start gap-3">
                   <Scale className="mt-0.5 h-5 w-5 text-[#6F899D]" />
                   <div>

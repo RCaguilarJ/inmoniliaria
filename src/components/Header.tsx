@@ -80,7 +80,7 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
           <button
             onClick={() => handleNavClick('desarrollos')}
             id="btn-nav-cta-header"
-            className="group flex items-center gap-2 rounded-md border border-white/15 bg-white/5 px-5 py-2.5 text-xs font-semibold tracking-[0.22em] text-white uppercase transition-all duration-300 hover:border-[#DCE7EF]/45 hover:bg-white/10"
+            className="editorial-btn-ghost group flex items-center gap-2 rounded-md px-5 py-2.5 text-xs font-semibold tracking-[0.22em] text-white uppercase transition-all duration-300 hover:border-[#DCE7EF]/45 hover:bg-white/10"
           >
             Ver propiedades
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -128,7 +128,7 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
                 <button
                   onClick={() => handleNavClick('desarrollos')}
                   id="btn-nav-cta-header-mobile"
-                  className="flex w-full items-center justify-center gap-2 rounded-md border border-white/15 bg-white/8 py-3 text-center text-xs font-semibold tracking-[0.22em] text-white uppercase transition-all duration-300 active:scale-95"
+                  className="editorial-btn-ghost flex w-full items-center justify-center gap-2 rounded-md py-3 text-center text-xs font-semibold tracking-[0.22em] text-white uppercase transition-all duration-300 active:scale-95"
                 >
                   Ver propiedades
                   <ArrowUpRight className="h-3.5 w-3.5" />

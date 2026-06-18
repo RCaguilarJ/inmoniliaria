@@ -87,7 +87,7 @@ export default function BlogView() {
                 <article
                   key={article.id}
                   onClick={() => setSelectedArticle(article)}
-                  className="group cursor-pointer overflow-hidden rounded-[4px] border border-white/10 bg-white/5 transition-all duration-300 hover:border-[#DCE7EF]/25 hover:shadow-[0_20px_40px_rgba(180,140,80,0.15)]"
+                className="editorial-media-frame group cursor-pointer overflow-hidden rounded-[8px] bg-white/5 transition-all duration-300 hover:border-[#DCE7EF]/25 hover:shadow-[0_20px_40px_rgba(180,140,80,0.15)]"
                   id={`article-card-${article.id}`}
                 >
                   <div className="relative aspect-[16/10] overflow-hidden">

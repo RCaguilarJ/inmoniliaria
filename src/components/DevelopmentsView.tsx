@@ -301,7 +301,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
       />
 
       <section className="-mt-10 px-6 pb-8">
-        <div className="mx-auto max-w-7xl rounded-[36px] border border-[#D4DEE6] bg-white px-6 py-10 shadow-[0_24px_70px_rgba(79,111,134,0.08)] md:px-10">
+        <div className="editorial-panel mx-auto max-w-7xl rounded-[36px] px-6 py-10 md:px-10">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="font-heading text-3xl font-bold tracking-tight text-[#31485C] sm:text-4xl">Busca tu próximo proyecto</h2>
             <p className="mt-3 text-sm leading-relaxed text-stone-600">
@@ -403,7 +403,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                 <div
                   key={dev.id}
                   onClick={() => setSelectedDevelopment(dev)}
-                  className="group cursor-pointer overflow-hidden rounded-[4px] border border-[#4F6F86]/15 bg-white transition-all duration-300 hover:border-[#6F899D]/40 hover:shadow-[0_20px_40px_rgba(180,140,80,0.15)]"
+                  className="editorial-media-frame group cursor-pointer overflow-hidden rounded-[4px] bg-white transition-all duration-300 hover:border-[#6F899D]/40 hover:shadow-[0_20px_40px_rgba(180,140,80,0.15)]"
                   id={`dev-card-${dev.id}`}
                 >
                   <div className="relative aspect-[16/11] overflow-hidden">

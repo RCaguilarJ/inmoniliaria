@@ -90,7 +90,7 @@ export default function AlianzasView() {
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {topServices.map((service) => {
               return (
-                <article key={service.title} className="rounded-[28px] border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+                <article key={service.title} className="editorial-dark-card rounded-[28px] p-6 backdrop-blur-sm">
                   <EditorialIcon name={service.icon} />
                   <h3 className="mt-6 font-heading text-2xl font-bold text-white">{service.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-stone-300">{service.description}</p>
@@ -102,7 +102,7 @@ export default function AlianzasView() {
       </section>
 
       <section className="-mt-8 px-6 pb-24">
-        <div className="mx-auto max-w-7xl rounded-[36px] border border-[#D4DEE6] bg-white px-6 py-14 shadow-[0_24px_70px_rgba(79,111,134,0.08)] md:px-10 lg:px-14">
+        <div className="editorial-panel mx-auto max-w-7xl rounded-[36px] px-6 py-14 md:px-10 lg:px-14">
           <div className="text-center">
             <span className="editorial-kicker font-mono text-[#31485C]/55">Metodología, procesos y herramientas</span>
             <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight text-[#31485C] sm:text-4xl">
@@ -117,7 +117,7 @@ export default function AlianzasView() {
 
           <div className="mt-12 grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <div className="rounded-[28px] bg-veq-dark-pattern p-8 text-white">
+              <div className="editorial-dark-card rounded-[28px] p-8 text-white">
                 <span className="editorial-kicker font-mono text-[#DCE7EF]/55">Análisis comercial</span>
                 <h3 className="mt-4 font-heading text-3xl font-bold">Benchmarking, perfil del cliente y definición de producto</h3>
                 <p className="mt-4 text-sm leading-relaxed text-stone-200">
@@ -139,7 +139,7 @@ export default function AlianzasView() {
 
             <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
               {tools.map((tool) => (
-                <div key={tool} className="rounded-[22px] border border-[#D4DEE6] bg-[#F8FBFD] p-5 shadow-sm">
+                <div key={tool} className="editorial-card rounded-[22px] bg-[#F8FBFD] p-5">
                   <div className="flex items-start gap-3">
                     <span className="section-icon-chip mt-0.5">
                       <FileText className="h-[18px] w-[18px]" />
@@ -154,7 +154,7 @@ export default function AlianzasView() {
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
             {bottomServices.map((service) => {
               return (
-                <div key={service.title} className="rounded-[24px] border border-[#D4DEE6] bg-white p-6 shadow-sm">
+                <div key={service.title} className="editorial-card rounded-[24px] p-6">
                   <EditorialIcon name={service.icon} />
                   <h3 className="mt-5 font-heading text-2xl font-bold text-[#31485C]">{service.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-stone-600">{service.description}</p>
@@ -166,7 +166,7 @@ export default function AlianzasView() {
       </section>
 
       <section className="bg-veq-dark-pattern px-6 py-20 text-white">
-        <div className="mx-auto max-w-5xl rounded-[30px] border border-white/10 bg-black/10 p-8 text-center md:p-12">
+        <div className="editorial-dark-card mx-auto max-w-5xl rounded-[30px] bg-black/10 p-8 text-center md:p-12">
           <span className="editorial-kicker font-mono text-[#DCE7EF]/55">Infraestructura Luxent</span>
           <h2 className="mt-4 font-heading text-4xl font-bold tracking-tight text-white">
             Un espacio que transmite confianza y acelera <span className="italic">decisiones</span>

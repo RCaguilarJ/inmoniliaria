@@ -33,7 +33,9 @@ export default function PageHero({
       <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/20 to-[#1f2933]/75" />
 
       <div className={`relative z-10 mx-auto flex h-full max-w-7xl items-center ${isCentered ? 'justify-center text-center' : 'justify-start text-left'}`}>
-        <div className={`space-y-3 ${isCentered ? 'max-w-3xl' : 'max-w-2xl'}`}>
+        <div className={`relative space-y-3 ${isCentered ? 'max-w-3xl' : 'max-w-2xl'}`}>
+          <div className={`absolute -top-8 ${isCentered ? 'left-1/2 -translate-x-1/2' : 'left-0'} h-px w-16 bg-[rgba(201,169,110,0.42)]`} />
+          <div className={`absolute -bottom-8 ${isCentered ? 'left-1/2 -translate-x-1/2' : 'left-0'} h-px w-10 bg-[rgba(201,169,110,0.28)]`} />
           {eyebrow && (
             <span className="editorial-kicker inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1 font-mono text-[#DCE7EF]/80 backdrop-blur-sm">
               {eyebrow}

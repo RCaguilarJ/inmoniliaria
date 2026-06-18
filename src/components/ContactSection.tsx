@@ -33,7 +33,7 @@ export default function ContactSection({
         </span>
       </div>
 
-      <div className="relative mx-auto max-w-7xl rounded-[36px] border border-[#D4DEE6] bg-white px-6 py-14 shadow-[0_24px_70px_rgba(79,111,134,0.08)] md:px-10 lg:px-14">
+      <div className="editorial-panel relative mx-auto max-w-7xl rounded-[36px] px-6 py-14 md:px-10 lg:px-14">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-heading text-4xl font-bold tracking-tight text-[#31485C]">{title}</h2>
           <p className="mt-4 text-sm leading-relaxed text-stone-600">{subtitle}</p>
@@ -54,7 +54,7 @@ export default function ContactSection({
           </div>
 
           <div className="lg:col-span-5">
-            <div className="overflow-hidden rounded-[28px] border border-[#D4DEE6] bg-[#F3F7FA] shadow-sm">
+            <div className="editorial-media-frame overflow-hidden rounded-[28px] bg-[#F3F7FA] shadow-sm">
               <img
                 src={image}
                 alt={imageAlt}
