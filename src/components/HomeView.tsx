@@ -4,9 +4,10 @@
  */
 
 import React from 'react';
-import { ArrowRight, Building2, FileText, Globe, Layers, Sparkles, Users } from 'lucide-react';
+import { ArrowRight, FileText } from 'lucide-react';
 import { BLOG_DATA, DEVELOPMENTS_DATA } from '../data';
 import ContactSection from './ContactSection';
+import EditorialIcon, { EditorialIconName } from './EditorialIcon';
 import SectionDivider from './SectionDivider';
 import heroImage from '../assets/images/veq_hero_towers_1781739523649.jpg';
 import contactImage from '../assets/images/veq_jack_levy_1781739538027.jpg';
@@ -20,24 +21,24 @@ const differentiators = [
   {
     title: 'Segmento premium',
     description: 'Comercializamos propiedades residenciales y comerciales de lujo en ubicaciones exclusivas.',
-    icon: Building2,
+    icon: 'buildings',
   },
   {
     title: 'Experiencia digital',
     description: 'Integramos soluciones tecnológicas para acompañar al cliente desde la búsqueda hasta el cierre.',
-    icon: Globe,
+    icon: 'monitor',
   },
   {
     title: 'Marketing especializado',
     description: 'Diseñamos campañas personalizadas para cada propiedad con foco en posicionamiento y conversión.',
-    icon: Sparkles,
+    icon: 'chart-line-up',
   },
   {
     title: 'Atención personalizada',
     description: 'Brindamos asesoría integral con seguimiento cercano para clientes de alto perfil.',
-    icon: Users,
+    icon: 'handshake',
   },
-];
+] satisfies Array<{ title: string; description: string; icon: EditorialIconName }>;
 
 const tools = [
   'Listas de precios en tiempo real',
@@ -97,7 +98,7 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
       <section className="bg-veq-dark-pattern px-6 py-20 text-white">
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.32em] text-[#DCE7EF]">Propiedades destacadas</span>
+            <span className="editorial-kicker font-mono text-[#DCE7EF]/55">Propiedades destacadas</span>
             <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Portafolio seleccionado
             </h2>
@@ -113,13 +114,13 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
               <article
                 key={development.id}
                 onClick={() => onNavigate('desarrollos')}
-                className="group cursor-pointer overflow-hidden rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-[#DCE7EF]/35"
+                className="group cursor-pointer overflow-hidden rounded-[4px] border border-white/10 bg-white/5 backdrop-blur-sm transition-all hover:border-[#DCE7EF]/35 hover:shadow-[0_20px_40px_rgba(180,140,80,0.15)]"
               >
                 <div className="relative aspect-[4/5] overflow-hidden">
                   <img
                     src={development.image}
                     alt={development.name}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover"
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
@@ -141,9 +142,9 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
       <section className="-mt-8 px-6 pb-24">
         <div className="mx-auto max-w-7xl rounded-[36px] border border-[#D4DEE6] bg-white px-6 py-14 shadow-[0_24px_70px_rgba(79,111,134,0.08)] md:px-10 lg:px-14">
           <div className="text-center">
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.32em] text-[#6F899D]">Qué nos diferencia</span>
+            <span className="editorial-kicker font-mono text-[#31485C]/55">Qué nos diferencia</span>
             <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight text-[#31485C] sm:text-4xl">
-              Una propuesta premium con ejecución digital
+              Una propuesta premium con ejecución <span className="italic">digital</span>
             </h2>
             <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-stone-600">
               Nuestro objetivo es proporcionar una asesoría integral que combine el conocimiento profundo del mercado inmobiliario con tendencias tecnológicas, diseño visual y comunicación comercial.
@@ -154,12 +155,9 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {differentiators.map((item) => {
-              const Icon = item.icon;
               return (
                 <div key={item.title} className="rounded-[24px] border border-[#D4DEE6] bg-[#F8FBFD] p-6">
-                  <div className="inline-flex rounded-2xl bg-[#6F899D]/10 p-3 text-[#6F899D]">
-                    <Icon className="h-5 w-5" />
-                  </div>
+                  <EditorialIcon name={item.icon} />
                   <h3 className="mt-5 font-heading text-xl font-bold text-[#31485C]">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-stone-600">{item.description}</p>
                 </div>
@@ -168,8 +166,8 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
           </div>
 
           <div className="mt-14 grid gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-5">
-              <span className="font-mono text-xs font-bold uppercase tracking-[0.32em] text-[#6F899D]">Servicios y metodología</span>
+          <div className="lg:col-span-5">
+              <span className="editorial-kicker font-mono text-[#31485C]/55">Servicios y metodología</span>
               <h3 className="mt-3 font-heading text-3xl font-bold text-[#31485C]">Comercialización, análisis y seguimiento</h3>
               <p className="mt-4 text-sm leading-relaxed text-stone-600">
                 Luxent integra comercialización inmobiliaria, consultoría patrimonial, diseño visual y gestión digital para acompañar cada propiedad desde su salida al mercado hasta la postventa.
@@ -204,9 +202,9 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <span className="font-mono text-xs font-bold uppercase tracking-[0.32em] text-[#DCE7EF]">Insights Luxent</span>
+              <span className="editorial-kicker font-mono text-[#DCE7EF]/55">Insights Luxent</span>
               <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                Mercado, comercialización y producto inmobiliario
+                Mercado, comercialización y producto <span className="italic">inmobiliario</span>
               </h2>
             </div>
             <button

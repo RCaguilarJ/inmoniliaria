@@ -4,9 +4,10 @@
  */
 
 import React from 'react';
-import { Compass, FileText, Globe, Layers, Scale, ShieldCheck, Sparkles, Users } from 'lucide-react';
+import { FileText, Scale } from 'lucide-react';
 import { INITIATIVES_DATA } from '../data';
 import ContactSection from './ContactSection';
+import EditorialIcon, { EditorialIconName } from './EditorialIcon';
 import PageHero from './PageHero';
 import SectionDivider from './SectionDivider';
 import heroImage from '../assets/images/veq_hero_towers_1781739523649.jpg';
@@ -16,34 +17,34 @@ const differentiators = [
   {
     title: 'Segmento premium',
     description: 'Enfocados en la comercialización de propiedades de lujo residenciales, comerciales y exclusivas.',
-    icon: Compass,
+    icon: 'buildings',
   },
   {
     title: 'Experiencia digital',
     description: 'Soluciones tecnológicas de vanguardia para ofrecer una experiencia fluida de búsqueda, análisis y cierre.',
-    icon: Globe,
+    icon: 'monitor',
   },
   {
     title: 'Marketing especializado',
     description: 'Campañas personalizadas, posicionamiento SEO/SEM, redes sociales y contenidos visuales para cada propiedad.',
-    icon: Sparkles,
+    icon: 'chart-line-up',
   },
   {
     title: 'Diseño de vanguardia',
     description: 'Presentaciones visuales sofisticadas que capturan la esencia de cada desarrollo y realzan sus mejores atributos.',
-    icon: Layers,
+    icon: 'pen-nib',
   },
   {
     title: 'Community management',
     description: 'Gestión de comunidades y presencia online para sostener relaciones de confianza y valor continuo.',
-    icon: Users,
+    icon: 'users-three',
   },
   {
     title: 'Equipo multidisciplinario',
     description: 'Nuestra clave está en un equipo comprometido con la excelencia comercial, operativa y digital.',
-    icon: ShieldCheck,
+    icon: 'briefcase',
   },
-];
+] satisfies Array<{ title: string; description: string; icon: EditorialIconName }>;
 
 export default function NosotrosView() {
   return (
@@ -58,8 +59,8 @@ export default function NosotrosView() {
       <section className="bg-veq-dark-pattern px-6 py-20 text-white">
         <div className="mx-auto grid max-w-7xl overflow-hidden rounded-[34px] border border-white/10 bg-black/10 lg:grid-cols-2">
           <div className="p-8 md:p-12">
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.32em] text-[#DCE7EF]">Perfil Luxent</span>
-            <h2 className="mt-4 font-heading text-4xl font-bold tracking-tight text-white">Asesoría integral con base comercial y digital</h2>
+            <span className="editorial-kicker font-mono text-[#DCE7EF]/55">Perfil Luxent</span>
+            <h2 className="mt-4 font-heading text-4xl font-bold tracking-tight text-white">Asesoría integral con base comercial y <span className="italic">digital</span></h2>
             <div className="mt-6 space-y-4 text-sm leading-relaxed text-stone-200">
               <p>
                 Nuestro objetivo es combinar conocimiento profundo del mercado inmobiliario con las últimas tendencias tecnológicas y digitales. A través de atención al detalle, marketing, diseño y comunicación digital, facilitamos la compra, venta y alquiler de propiedades que redefinen el lujo.
@@ -87,9 +88,9 @@ export default function NosotrosView() {
       <section className="-mt-8 px-6 pb-24">
         <div className="mx-auto max-w-7xl rounded-[36px] border border-[#D4DEE6] bg-white px-6 py-14 shadow-[0_24px_70px_rgba(79,111,134,0.08)] md:px-10 lg:px-14">
           <div className="text-center">
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.32em] text-[#6F899D]">Qué nos diferencia</span>
+            <span className="editorial-kicker font-mono text-[#31485C]/55">Qué nos diferencia</span>
             <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight text-[#31485C] sm:text-4xl">
-              Excelencia comercial, visual y operativa
+              Excelencia comercial, visual y <span className="italic">operativa</span>
             </h2>
           </div>
 
@@ -97,12 +98,9 @@ export default function NosotrosView() {
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {differentiators.map((item) => {
-              const Icon = item.icon;
               return (
                 <div key={item.title} className="rounded-[24px] border border-[#D4DEE6] bg-[#F8FBFD] p-6">
-                  <div className="inline-flex rounded-2xl bg-[#6F899D]/10 p-3 text-[#6F899D]">
-                    <Icon className="h-5 w-5" />
-                  </div>
+                  <EditorialIcon name={item.icon} />
                   <h3 className="mt-5 font-heading text-xl font-bold text-[#31485C]">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-stone-600">{item.description}</p>
                 </div>
@@ -112,8 +110,8 @@ export default function NosotrosView() {
 
           <div className="mt-16">
             <div className="text-center">
-              <span className="font-mono text-xs font-bold uppercase tracking-[0.32em] text-[#6F899D]">Nuestras iniciativas</span>
-              <h3 className="mt-3 font-heading text-3xl font-bold text-[#31485C]">Líneas de trabajo que sostienen la experiencia Luxent</h3>
+              <span className="editorial-kicker font-mono text-[#31485C]/55">Nuestras iniciativas</span>
+              <h3 className="mt-3 font-heading text-3xl font-bold text-[#31485C]">Líneas de trabajo que sostienen la experiencia <span className="italic">Luxent</span></h3>
             </div>
 
             <div className="mt-10 grid gap-6 lg:grid-cols-3">

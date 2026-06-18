@@ -403,14 +403,14 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                 <div
                   key={dev.id}
                   onClick={() => setSelectedDevelopment(dev)}
-                  className="group cursor-pointer overflow-hidden rounded-xl border border-[#4F6F86]/15 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-[#6F899D]/40 hover:shadow-md"
+                  className="group cursor-pointer overflow-hidden rounded-[4px] border border-[#4F6F86]/15 bg-white transition-all duration-300 hover:border-[#6F899D]/40 hover:shadow-[0_20px_40px_rgba(180,140,80,0.15)]"
                   id={`dev-card-${dev.id}`}
                 >
                   <div className="relative aspect-[16/11] overflow-hidden">
                     <img
                       src={dev.image}
                       alt={dev.name}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="h-full w-full object-cover"
                       referrerPolicy="no-referrer"
                     />
                     

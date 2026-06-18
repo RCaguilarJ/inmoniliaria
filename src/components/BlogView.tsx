@@ -87,14 +87,14 @@ export default function BlogView() {
                 <article
                   key={article.id}
                   onClick={() => setSelectedArticle(article)}
-                  className="group cursor-pointer overflow-hidden rounded-[26px] border border-white/10 bg-white/5 transition-all duration-300 hover:-translate-y-1 hover:border-[#DCE7EF]/25"
+                  className="group cursor-pointer overflow-hidden rounded-[4px] border border-white/10 bg-white/5 transition-all duration-300 hover:border-[#DCE7EF]/25 hover:shadow-[0_20px_40px_rgba(180,140,80,0.15)]"
                   id={`article-card-${article.id}`}
                 >
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <img
                       src={article.image}
                       alt={article.title}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="h-full w-full object-cover"
                       referrerPolicy="no-referrer"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
