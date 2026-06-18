@@ -161,7 +161,7 @@ export default function ContactForm({
                 <select
                   id="select-type"
                   value={formData.type}
-                  onChange={(e: any) => setFormData({ ...formData, type: e.target.value, message: e.target.value === 'terreno' ? 'Quiero comercializar un proyecto o propiedad dentro del segmento premium...' : formData.message })}
+                  onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setFormData({ ...formData, type: e.target.value, message: e.target.value === 'terreno' ? 'Quiero comercializar un proyecto o propiedad dentro del segmento premium...' : formData.message })}
                   className="w-full appearance-none rounded-lg border border-stone-200 bg-stone-50 px-4 py-3 pr-10 text-sm text-stone-900 outline-none transition-all focus:border-[#6F899D]"
                 >
                   <option value="general" className="bg-white">Quiero Asesoría</option>

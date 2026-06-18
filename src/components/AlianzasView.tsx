@@ -141,8 +141,8 @@ export default function AlianzasView() {
               {tools.map((tool) => (
                 <div key={tool} className="rounded-[22px] border border-[#D4DEE6] bg-[#F8FBFD] p-5 shadow-sm">
                   <div className="flex items-start gap-3">
-                    <span className="mt-0.5 inline-flex rounded-full bg-[#6F899D]/10 p-2 text-[#6F899D]">
-                      <FileText className="h-4 w-4" />
+                    <span className="section-icon-chip mt-0.5">
+                      <FileText className="h-[18px] w-[18px]" />
                     </span>
                     <p className="text-sm leading-relaxed text-stone-700">{tool}</p>
                   </div>

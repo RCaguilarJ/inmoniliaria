@@ -63,6 +63,19 @@
     width: 60px;
     background: rgba(201, 169, 110, 0.3);
   }
+
+  .section-icon-chip {
+    display: inline-flex;
+    height: 42px;
+    width: 42px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid #eef2f5;
+    background: linear-gradient(180deg, #fafbfc 0%, #f3f6f9 100%);
+    color: #ccd5dd;
+    box-shadow: 0 4px 12px rgba(34, 52, 70, 0.04);
+  }
 }
 
 ::-webkit-scrollbar {

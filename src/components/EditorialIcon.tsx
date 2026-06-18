@@ -45,10 +45,14 @@ const ICONS = {
 
 export default function EditorialIcon({
   name,
-  className = 'text-[#C9A96E]',
-  size = 28,
+  className = 'text-[#CCD5DD]',
+  size = 22,
 }: EditorialIconProps) {
   const Icon = ICONS[name];
 
-  return <Icon size={size} weight="light" className={className} aria-hidden="true" />;
+  return (
+    <span className="section-icon-chip" aria-hidden="true">
+      <Icon size={size} weight="light" className={className} />
+    </span>
+  );
 }

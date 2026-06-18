@@ -14,7 +14,7 @@ import contactImage from '../assets/images/veq_jack_levy_1781739538027.jpg';
 
 interface HomeViewProps {
   onNavigate: (tabId: string) => void;
-  setSelectedCity?: (city: any) => void;
+  setSelectedCity?: (city: string) => void;
 }
 
 const differentiators = [
@@ -65,7 +65,7 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/35 to-[#1f2933]/86" />
 
         <div className="relative z-10 mx-auto w-full max-w-5xl text-center">
-          <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.32em] text-[#DCE7EF] backdrop-blur-sm">
+          <span className="editorial-kicker inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1 font-mono text-[#DCE7EF]/80 backdrop-blur-sm">
             Perfil empresarial Luxent · Junio 2025
           </span>
           <h1 className="mt-6 font-heading text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
@@ -186,8 +186,8 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
               {tools.map((tool) => (
                 <div key={tool} className="rounded-[22px] border border-[#D4DEE6] bg-white p-5 shadow-sm">
                   <div className="flex items-start gap-3">
-                    <span className="mt-0.5 inline-flex rounded-full bg-[#6F899D]/10 p-2 text-[#6F899D]">
-                      <FileText className="h-4 w-4" />
+                    <span className="section-icon-chip mt-0.5">
+                      <FileText className="h-[18px] w-[18px]" />
                     </span>
                     <p className="text-sm leading-relaxed text-stone-700">{tool}</p>
                   </div>

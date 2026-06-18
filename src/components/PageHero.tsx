@@ -35,7 +35,7 @@ export default function PageHero({
       <div className={`relative z-10 mx-auto flex h-full max-w-7xl items-center ${isCentered ? 'justify-center text-center' : 'justify-start text-left'}`}>
         <div className={`space-y-3 ${isCentered ? 'max-w-3xl' : 'max-w-2xl'}`}>
           {eyebrow && (
-            <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.32em] text-[#DCE7EF] backdrop-blur-sm">
+            <span className="editorial-kicker inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1 font-mono text-[#DCE7EF]/80 backdrop-blur-sm">
               {eyebrow}
             </span>
           )}
