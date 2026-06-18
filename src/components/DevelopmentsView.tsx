@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -12,7 +12,12 @@ import { motion, AnimatePresence } from 'motion/react';
 import { DEVELOPMENTS_DATA } from '../data';
 import { Development } from '../types';
 import ContactForm from './ContactForm';
+import ContactSection from './ContactSection';
 import CountryClubLogo from './CountryClubLogo';
+import PageHero from './PageHero';
+import SectionDivider from './SectionDivider';
+import heroImage from '../assets/images/veq_countryclub_1781741180731.jpg';
+import contactImage from '../assets/images/veq_jack_levy_1781739538027.jpg';
 
 interface DevelopmentsViewProps {
   initialCityFilter?: string;
@@ -145,7 +150,7 @@ const CUSTOM_PROJECT_BENEFITS: Record<string, { benefits: WhyBenefit[]; progress
   },
   'veq-travessera': {
     benefits: [
-      { title: 'Arquitectura精品 Boutique', desc: 'Exclusivo complejo de solo 45 residencias verticales, limitando el tráfico y promoviendo el confort.', icon: 'Building' },
+      { title: 'Arquitectura Boutique', desc: 'Exclusivo complejo de solo 45 residencias verticales, limitando el tráfico y promoviendo el confort.', icon: 'Building' },
       { title: 'Eficiencia Espacial Completa', desc: 'Plantas sumamente aprovechadas que eliminan pasillos inútiles, maximizando iluminación.', icon: 'Layers' },
       { title: 'Fideicomiso Seguro BBVA', desc: 'Certeza fiduciaria íntegra para blindar tu patrimonio financiero en cada etapa.', icon: 'ShieldCheck' },
       { title: 'Bajo Costo Administrativo', desc: 'Diseño estructural de bajo consumo que limita las elevadas cuotas habituales de mantenimiento.', icon: 'Check' }
@@ -288,41 +293,41 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
 
   return (
     <div className="relative w-full">
-      {/* HEADER HERO */}
-      <section className="bg-[#F3ECE2] border-b border-[#005A44]/15 px-6 py-16">
-        <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <div className="space-y-2">
-              <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#1F8B74]">Portafolio Inmobiliario</span>
-              <h1 className="font-heading text-4xl font-bold text-[#005A44] sm:text-5xl">Nuestros Desarrollos</h1>
-              <p className="max-w-xl text-stone-605 text-sm">
-                Explora nuestra gama de residencias de vanguardia. Diseñamos espacios óptimos que combinan plusvalía, sustentabilidad y excelente ubicación.
-              </p>
-            </div>
+      <PageHero
+        image={heroImage}
+        eyebrow="Portafolio inmobiliario"
+        title="Nuestros desarrollos"
+        subtitle="Explora la selección de propiedades de Luxent. Conservamos la información real del portafolio y la presentamos con una estructura visual más editorial y ordenada."
+      />
 
-            {/* Direct Search input */}
-            <div className="relative max-w-md w-full md:w-80">
+      <section className="-mt-10 px-6 pb-8">
+        <div className="mx-auto max-w-7xl rounded-[36px] border border-[#D4DEE6] bg-white px-6 py-10 shadow-[0_24px_70px_rgba(79,111,134,0.08)] md:px-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="font-heading text-3xl font-bold tracking-tight text-[#31485C] sm:text-4xl">Busca tu próximo proyecto</h2>
+            <p className="mt-3 text-sm leading-relaxed text-stone-600">
+              Filtra desarrollos por ciudad, etapa comercial o búsqueda directa sin alterar la información real ya integrada en el sitio.
+            </p>
+          </div>
+
+          <SectionDivider className="mt-8" />
+
+          <div className="mt-8 space-y-5">
+            <div className="relative mx-auto max-w-md w-full">
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Buscar desarrollo o calle..."
-                className="w-full rounded-full border border-stone-250 bg-white px-11 py-3 text-xs text-stone-900 placeholder-stone-400 outline-none transition-all focus:border-[#1F8B74] shadow-sm"
+                className="w-full rounded-md border border-stone-200 bg-white px-11 py-3 text-xs text-stone-900 placeholder-stone-400 outline-none transition-all focus:border-[#6F899D] shadow-sm"
                 id="search-developments"
               />
               <Search className="absolute left-4 top-3.5 h-4 w-4 text-stone-400" />
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* FILTER CONTROL PANEL */}
-      <section className="bg-white border-b border-[#005A44]/15 py-6 px-6">
-        <div className="mx-auto max-w-7xl space-y-5">
           {/* Cities Toggles */}
           <div className="space-y-2">
-            <span className="font-mono text-[10px] font-bold text-stone-500 uppercase tracking-widest">Filtrar por Ciudad</span>
-            <div className="flex flex-wrap gap-2">
+            <span className="block text-center font-mono text-[10px] font-bold text-stone-500 uppercase tracking-[0.28em]">Filtrar por ciudad</span>
+            <div className="flex flex-wrap justify-center gap-2">
               {cities.map((city) => {
                 const isActive = selectedCity === city;
                 return (
@@ -330,9 +335,9 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                     key={city}
                     onClick={() => handleCitySelect(city)}
                     id={`tab-city-${city.toLowerCase()}`}
-                    className={`rounded-full px-4 py-1.5 text-xs font-medium uppercase tracking-wider transition-all duration-300 ${
+                    className={`rounded-md border px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] transition-all duration-300 ${
                       isActive 
-                        ? 'bg-[#1F8B74] text-white font-bold shadow-sm' 
+                        ? 'border-[#6F899D] bg-[#6F899D] text-white font-bold shadow-sm' 
                         : 'border border-stone-200 bg-white text-stone-600 hover:bg-stone-50 hover:text-stone-900'
                     }`}
                   >
@@ -345,8 +350,8 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
 
           {/* Status Progress Toggles */}
           <div className="space-y-2">
-            <span className="font-mono text-[10px] font-bold text-stone-500 uppercase tracking-widest">Filtrar por Avance de Obra</span>
-            <div className="flex flex-wrap gap-2">
+            <span className="block text-center font-mono text-[10px] font-bold text-stone-500 uppercase tracking-[0.28em]">Filtrar por avance de obra</span>
+            <div className="flex flex-wrap justify-center gap-2">
               {statuses.map((status) => {
                 const isActive = selectedStatus === status;
                 return (
@@ -354,9 +359,9 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                     key={status}
                     onClick={() => setSelectedStatus(status)}
                     id={`tab-status-${status.replace(' ', '-').toLowerCase()}`}
-                    className={`border rounded-full px-4.5 py-1.5 text-xs font-medium uppercase tracking-wider transition-all duration-300 ${
+                    className={`rounded-md border px-4.5 py-1.5 text-xs font-medium uppercase tracking-[0.2em] transition-all duration-300 ${
                       isActive 
-                        ? 'border-[#1F8B74] bg-[#1F8B74]/10 text-[#1F8B74] font-semibold' 
+                        ? 'border-[#6F899D] bg-[#6F899D]/10 text-[#6F899D] font-semibold' 
                         : 'border-stone-200 bg-white text-stone-600 hover:bg-stone-50 hover:text-stone-900'
                     }`}
                   >
@@ -366,24 +371,25 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
               })}
             </div>
           </div>
+          </div>
         </div>
       </section>
 
       {/* PORTFOLIO GRID CATALOG */}
-      <section className="px-6 py-16">
+      <section className="px-6 py-12">
         <div className="mx-auto max-w-7xl">
           {filteredDevelopments.length === 0 ? (
-            <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-[#005A44]/20 py-20 text-center bg-[#FCFAF7]">
+            <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-[#4F6F86]/20 py-20 text-center bg-[#FAFCFD]">
               <span className="rounded-full bg-stone-100 p-4 text-stone-500 border border-stone-200">
                 <Info className="h-8 w-8" />
               </span>
-              <h3 className="mt-4 font-heading text-xl font-bold text-[#005A44]">Sin desarrollos disponibles</h3>
+              <h3 className="mt-4 font-heading text-xl font-bold text-[#4F6F86]">Sin desarrollos disponibles</h3>
               <p className="mt-2 text-stone-600 text-sm max-w-xs">
                 Por el momento no tenemos proyectos registrados que coincidan con la combinación de filtros seleccionada.
               </p>
               <button
                 onClick={() => { setSelectedCity('TODAS'); setSelectedStatus('TODOS'); setSearchTerm(''); }}
-                className="mt-6 rounded-full bg-[#1F8B74] px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#005A44]"
+                className="mt-6 rounded-full bg-[#6F899D] px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#4F6F86]"
               >
                 Limpiar filtros
               </button>
@@ -397,7 +403,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                 <div
                   key={dev.id}
                   onClick={() => setSelectedDevelopment(dev)}
-                  className="group cursor-pointer overflow-hidden rounded-xl border border-[#005A44]/15 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-[#1F8B74]/40 hover:shadow-md"
+                  className="group cursor-pointer overflow-hidden rounded-xl border border-[#4F6F86]/15 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-[#6F899D]/40 hover:shadow-md"
                   id={`dev-card-${dev.id}`}
                 >
                   <div className="relative aspect-[16/11] overflow-hidden">
@@ -412,34 +418,34 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                     <div className="absolute left-4 top-4 flex flex-wrap gap-2">
                       <span className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider ${
                         dev.status === 'Concluido' 
-                          ? 'bg-[#1F8B74] text-white shadow-sm' 
+                          ? 'bg-[#6F899D] text-white shadow-sm' 
                           : dev.status === 'En Desarrollo'
-                          ? 'bg-[#005A44] text-white shadow-sm'
+                          ? 'bg-[#4F6F86] text-white shadow-sm'
                           : 'bg-stone-600 text-white shadow-sm'
                       }`}>
                         {dev.status}
                       </span>
                       {flags.immediateDelivery && (
-                        <span className="rounded-full border border-stone-100 bg-white/95 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#005A44] shadow-sm">
+                        <span className="rounded-full border border-stone-100 bg-white/95 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#4F6F86] shadow-sm">
                           Entrega inmediata
                         </span>
                       )}
                     </div>
 
-                    <div className="absolute right-4 top-4 rounded-full bg-white/95 px-3 py-1 text-[10px] font-bold text-[#005A44] uppercase tracking-widest shadow-sm border border-stone-100">
+                    <div className="absolute right-4 top-4 rounded-full bg-white/95 px-3 py-1 text-[10px] font-bold text-[#4F6F86] uppercase tracking-widest shadow-sm border border-stone-100">
                       {dev.city}
                     </div>
 
                     {dev.bannerText && (
                       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-4">
-                        <p className="font-serif italic text-xs text-[#8CC5C3] font-medium">{dev.bannerText}</p>
+                        <p className="font-serif italic text-xs text-[#DCE7EF] font-medium">{dev.bannerText}</p>
                       </div>
                     )}
                   </div>
 
                   <div className="p-6 space-y-4">
                     <div>
-                      <h4 className="font-heading text-xl font-bold text-[#005A44] transition-colors group-hover:text-[#1F8B74] flex items-center gap-2">
+                      <h4 className="font-heading text-xl font-bold text-[#4F6F86] transition-colors group-hover:text-[#6F899D] flex items-center gap-2">
                         {dev.name}
                         {dev.id === 'veq-countryclub' && (
                           <span className="inline-block transition-transform duration-300 group-hover:scale-110">
@@ -448,7 +454,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                         )}
                       </h4>
                       <p className="mt-1 flex items-center gap-1.5 text-xs text-stone-500">
-                        <MapPin className="h-3 w-3 text-[#1F8B74]" />
+                        <MapPin className="h-3 w-3 text-[#6F899D]" />
                         <span className="line-clamp-1">{dev.address}</span>
                       </p>
                     </div>
@@ -459,8 +465,8 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
 
                     {(flags.website || flags.brochure || flags.progress || flags.availability || flags.showUnit) && (
                       <div className="flex flex-wrap gap-2">
-                        {flags.website && <span className="rounded-full bg-[#1F8B74]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#1F8B74]">Sitio web</span>}
-                        {flags.brochure && <span className="rounded-full bg-[#005A44]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#005A44]">Brochure</span>}
+                        {flags.website && <span className="rounded-full bg-[#6F899D]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#6F899D]">Sitio web</span>}
+                        {flags.brochure && <span className="rounded-full bg-[#4F6F86]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#4F6F86]">Brochure</span>}
                         {flags.progress && <span className="rounded-full bg-stone-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-stone-700">Avance de obra</span>}
                         {flags.availability && <span className="rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-700">Disponibilidad</span>}
                         {flags.showUnit && <span className="rounded-full bg-amber-500/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-700">Departamento muestra</span>}
@@ -483,7 +489,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                         )}
                       </div>
                       
-                      <span className="flex items-center gap-1 font-mono text-[10px] font-bold uppercase tracking-wider text-[#1F8B74] group-hover:text-[#005A44] transition-colors">
+                      <span className="flex items-center gap-1 font-mono text-[10px] font-bold uppercase tracking-wider text-[#6F899D] group-hover:text-[#4F6F86] transition-colors">
                         Ficha Técnica
                         <Eye className="h-3.5 w-3.5" />
                       </span>
@@ -496,20 +502,30 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
         </div>
       </section>
 
+      <ContactSection
+        title="Contacta con nuestros asesores"
+        subtitle="Si te interesa alguno de estos desarrollos, agenda una videollamada o una visita guiada. Conservamos el inventario real y te ayudamos a canalizar la consulta correctamente."
+        formTitle="Solicitar información"
+        formSubtitle="Déjanos tus datos y te ayudaremos a revisar disponibilidad, etapas comerciales y siguientes pasos."
+        defaultType="desarrollo"
+        image={contactImage}
+        imageAlt="Luxent"
+      />
+
       {/* DEVELOPMENT DETAIL POPUP MODAL */}
       <AnimatePresence>
         {selectedDevelopment && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#00120e]/80 backdrop-blur-md overflow-y-auto">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#4A687E]/80 backdrop-blur-md overflow-y-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 30 }}
-              className="relative max-w-5xl w-full rounded-2xl bg-white border border-[#005A44]/15 shadow-2xl overflow-hidden my-8"
+              className="relative max-w-5xl w-full rounded-2xl bg-white border border-[#4F6F86]/15 shadow-2xl overflow-hidden my-8"
               id="dev-modal-panel"
             >
               <button
                 onClick={() => setSelectedDevelopment(null)}
-                className="absolute right-4 top-4 z-10 rounded-full bg-stone-100 p-2 text-stone-600 hover:bg-[#1F8B74] hover:text-white border border-stone-200 focus:outline-none transition-colors"
+                className="absolute right-4 top-4 z-10 rounded-full bg-stone-100 p-2 text-stone-600 hover:bg-[#6F899D] hover:text-white border border-stone-200 focus:outline-none transition-colors"
                 aria-label="Cerrar ventana"
                 id="btn-close-dev-modal"
               >
@@ -526,7 +542,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                       onClick={() => setActiveModalTab('info')}
                       className={`rounded-lg py-2.5 px-3.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 border ${
                         activeModalTab === 'info'
-                          ? 'bg-[#1F8B74]/15 border-[#1F8B74] text-[#1F8B74] shadow-sm'
+                          ? 'bg-[#6F899D]/15 border-[#6F899D] text-[#6F899D] shadow-sm'
                           : 'border-stone-200 bg-white text-stone-600 hover:bg-stone-50 hover:text-stone-900'
                       }`}
                     >
@@ -537,7 +553,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                       onClick={() => setActiveModalTab('why')}
                       className={`rounded-lg py-2.5 px-3.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 border ${
                         activeModalTab === 'why'
-                          ? 'bg-[#1F8B74]/15 border-[#1F8B74] text-[#1F8B74] shadow-sm'
+                          ? 'bg-[#6F899D]/15 border-[#6F899D] text-[#6F899D] shadow-sm'
                           : 'border-stone-200 bg-white text-stone-600 hover:bg-stone-50 hover:text-stone-900'
                       }`}
                     >
@@ -548,7 +564,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                       onClick={() => setActiveModalTab('progress')}
                       className={`rounded-lg py-2.5 px-3.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 border ${
                         activeModalTab === 'progress'
-                          ? 'bg-[#1F8B74]/15 border-[#1F8B74] text-[#1F8B74] shadow-sm'
+                          ? 'bg-[#6F899D]/15 border-[#6F899D] text-[#6F899D] shadow-sm'
                           : 'border-stone-200 bg-white text-stone-600 hover:bg-stone-50 hover:text-stone-900'
                       }`}
                     >
@@ -559,7 +575,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                       onClick={() => setActiveModalTab('units')}
                       className={`rounded-lg py-2.5 px-3.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 border ${
                         activeModalTab === 'units'
-                          ? 'bg-[#1F8B74]/15 border-[#1F8B74] text-[#1F8B74] shadow-sm'
+                          ? 'bg-[#6F899D]/15 border-[#6F899D] text-[#6F899D] shadow-sm'
                           : 'border-stone-200 bg-white text-stone-600 hover:bg-stone-50 hover:text-stone-900'
                       }`}
                     >
@@ -581,20 +597,20 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                           alt={selectedDevelopment.name}
                           className="w-full h-full object-cover"
                         />
-                        <div className="absolute right-4 bottom-4 rounded bg-black/75 px-3 py-1 font-mono text-xs text-[#8CC5C3] uppercase tracking-wider border border-white/5">
+                        <div className="absolute right-4 bottom-4 rounded bg-black/75 px-3 py-1 font-mono text-xs text-[#DCE7EF] uppercase tracking-wider border border-white/5">
                           {selectedDevelopment.city}
                         </div>
                       </div>
 
                       <div className="space-y-2">
                         <div className="flex items-baseline gap-3">
-                          <h2 className="font-heading text-3xl font-bold text-[#005A44]">{selectedDevelopment.name}</h2>
-                          <span className="rounded-full bg-[#1F8B74]/10 border border-[#1F8B74]/25 px-3 py-0.5 text-[10px] font-bold uppercase text-[#1F8B74]">
+                          <h2 className="font-heading text-3xl font-bold text-[#4F6F86]">{selectedDevelopment.name}</h2>
+                          <span className="rounded-full bg-[#6F899D]/10 border border-[#6F899D]/25 px-3 py-0.5 text-[10px] font-bold uppercase text-[#6F899D]">
                             {selectedDevelopment.status}
                           </span>
                         </div>
                         <p className="flex items-center gap-1.5 text-xs text-stone-600 font-medium font-sans">
-                          <MapPin className="h-3.5 w-3.5 text-[#1F8B74]" />
+                          <MapPin className="h-3.5 w-3.5 text-[#6F899D]" />
                           {selectedDevelopment.address}
                         </p>
                         {(getProjectSheetFlags(selectedDevelopment.id).website ||
@@ -603,12 +619,12 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                           getProjectSheetFlags(selectedDevelopment.id).availability ||
                           getProjectSheetFlags(selectedDevelopment.id).showUnit) && (
                           <div className="flex flex-wrap gap-2 pt-1">
-                            {getProjectSheetFlags(selectedDevelopment.id).website && <span className="rounded-full bg-[#1F8B74]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#1F8B74]">Sitio web</span>}
-                            {getProjectSheetFlags(selectedDevelopment.id).brochure && <span className="rounded-full bg-[#005A44]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#005A44]">Brochure</span>}
+                            {getProjectSheetFlags(selectedDevelopment.id).website && <span className="rounded-full bg-[#6F899D]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#6F899D]">Sitio web</span>}
+                            {getProjectSheetFlags(selectedDevelopment.id).brochure && <span className="rounded-full bg-[#4F6F86]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#4F6F86]">Brochure</span>}
                             {getProjectSheetFlags(selectedDevelopment.id).progress && <span className="rounded-full bg-stone-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-stone-700">Avance de obra</span>}
                             {getProjectSheetFlags(selectedDevelopment.id).availability && <span className="rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-700">Disponibilidad</span>}
                             {getProjectSheetFlags(selectedDevelopment.id).showUnit && <span className="rounded-full bg-amber-500/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-700">Departamento muestra</span>}
-                            {getProjectSheetFlags(selectedDevelopment.id).immediateDelivery && <span className="rounded-full bg-white px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#005A44] border border-stone-200">Entrega inmediata</span>}
+                            {getProjectSheetFlags(selectedDevelopment.id).immediateDelivery && <span className="rounded-full bg-white px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#4F6F86] border border-stone-200">Entrega inmediata</span>}
                           </div>
                         )}
                         {getProjectSheetFlags(selectedDevelopment.id).note && (
@@ -619,43 +635,43 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                       </div>
 
                       {selectedDevelopment.id === 'veq-countryclub' && (
-                        <div className="flex flex-col items-center justify-center p-8 rounded-xl border border-stone-200/65 bg-gradient-to-br from-[#005A44]/15 via-transparent to-transparent shadow-inner">
+                        <div className="flex flex-col items-center justify-center p-8 rounded-xl border border-stone-200/65 bg-gradient-to-br from-[#4F6F86]/15 via-transparent to-transparent shadow-inner">
                           <CountryClubLogo className="h-44 w-44" showText={true} />
-                          <div className="mt-2 text-[10px] uppercase tracking-widest text-[#1F8B74] font-mono text-center font-bold">
+                          <div className="mt-2 text-[10px] uppercase tracking-widest text-[#6F899D] font-mono text-center font-bold">
                             Identidad Exclusiva Residencial
                           </div>
                         </div>
                       )}
 
                       <div className="space-y-3">
-                        <h5 className="font-heading text-sm font-bold uppercase tracking-wider text-[#005A44]">Concepto Arquitectónico</h5>
+                        <h5 className="font-heading text-sm font-bold uppercase tracking-wider text-[#4F6F86]">Concepto Arquitectónico</h5>
                         <p className="text-sm text-stone-700 leading-relaxed font-light">
                           {selectedDevelopment.description}
                         </p>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-4 rounded-xl bg-[#FAF8F4] p-4.5 border border-stone-200/85">
+                      <div className="grid grid-cols-2 gap-4 rounded-xl bg-[#F3F7FA] p-4.5 border border-stone-200/85">
                         {selectedDevelopment.units && (
                           <div>
                             <p className="text-xs text-stone-500 font-mono uppercase tracking-wider">Unidades Totales</p>
-                            <p className="text-lg font-bold text-[#005A44] mt-0.5">{selectedDevelopment.units} Unidades</p>
+                            <p className="text-lg font-bold text-[#4F6F86] mt-0.5">{selectedDevelopment.units} Unidades</p>
                           </div>
                         )}
                         {selectedDevelopment.areaSqM && (
                           <div>
                             <p className="text-xs text-stone-500 font-mono uppercase tracking-wider">Superficie de Obra</p>
-                            <p className="text-lg font-bold text-[#005A44] mt-0.5">{selectedDevelopment.areaSqM.toLocaleString()} m² de construcción</p>
+                            <p className="text-lg font-bold text-[#4F6F86] mt-0.5">{selectedDevelopment.areaSqM.toLocaleString()} m² de construcción</p>
                           </div>
                         )}
                       </div>
 
                       {selectedDevelopment.amenities && (
                         <div className="space-y-3">
-                          <h5 className="font-heading text-sm font-bold uppercase tracking-wider text-[#005A44]">Amenidades Premium</h5>
+                          <h5 className="font-heading text-sm font-bold uppercase tracking-wider text-[#4F6F86]">Amenidades Premium</h5>
                           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                             {selectedDevelopment.amenities.map((amenity, idx) => (
-                              <div key={idx} className="flex items-center gap-2 text-xs text-stone-750 font-medium bg-[#FAF8F4] border border-stone-200/60 rounded-lg p-2.5">
-                                <span className="h-1.5 w-1.5 rounded-full bg-[#1F8B74]" />
+                              <div key={idx} className="flex items-center gap-2 text-xs text-stone-750 font-medium bg-[#F3F7FA] border border-stone-200/60 rounded-lg p-2.5">
+                                <span className="h-1.5 w-1.5 rounded-full bg-[#6F899D]" />
                                 {amenity}
                               </div>
                             ))}
@@ -673,18 +689,18 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                       className="space-y-6"
                     >
                       <div className="space-y-2">
-                        <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#1F8B74]">Ventajas Clave</span>
-                        <h3 className="font-heading text-2xl font-bold text-[#005A44] uppercase">¿Por qué elegir {selectedDevelopment.name}?</h3>
+                        <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#6F899D]">Ventajas Clave</span>
+                        <h3 className="font-heading text-2xl font-bold text-[#4F6F86] uppercase">¿Por qué elegir {selectedDevelopment.name}?</h3>
                         <p className="text-stone-600 text-xs">Propuesta de valor blindada, solidez fiduciaria corporativa y altos índices de plusvalía.</p>
                       </div>
 
                       <div className="grid gap-4 sm:grid-cols-2">
                         {getProjectExtraData(selectedDevelopment.id, selectedDevelopment.name).benefits.map((benefit, idx) => (
-                          <div key={idx} className="rounded-xl border border-stone-200 bg-[#FAF8F4] p-5 space-y-3 hover:border-[#1F8B74]/35 transition-all hover:shadow-sm">
-                            <div className="inline-flex rounded-lg bg-[#1F8B74]/10 border border-[#1F8B74]/20 p-2 text-[#1F8B74]">
-                              {renderIconByName(benefit.icon, "h-5 w-5 text-[#1F8B74]")}
+                          <div key={idx} className="rounded-xl border border-stone-200 bg-[#F3F7FA] p-5 space-y-3 hover:border-[#6F899D]/35 transition-all hover:shadow-sm">
+                            <div className="inline-flex rounded-lg bg-[#6F899D]/10 border border-[#6F899D]/20 p-2 text-[#6F899D]">
+                              {renderIconByName(benefit.icon, "h-5 w-5 text-[#6F899D]")}
                             </div>
-                            <h4 className="font-heading text-base font-bold text-[#005A44]">{benefit.title}</h4>
+                            <h4 className="font-heading text-base font-bold text-[#4F6F86]">{benefit.title}</h4>
                             <p className="text-xs text-stone-600 leading-relaxed font-light">{benefit.desc}</p>
                           </div>
                         ))}
@@ -695,7 +711,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                           <Check className="h-4 w-4" />
                         </span>
                         <div className="space-y-0.5">
-                          <p className="text-xs font-bold text-[#005A44] uppercase">Fideicomisos Protegidos</p>
+                          <p className="text-xs font-bold text-[#4F6F86] uppercase">Fideicomisos Protegidos</p>
                           <p className="text-[10px] text-stone-600 font-light">Todos nuestros desarrollos cuentan con fiduciarias institucionales BanBajío o BBVA para blindaje bursátil total.</p>
                         </div>
                       </div>
@@ -710,14 +726,14 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                       className="space-y-6"
                     >
                       <div className="space-y-2">
-                        <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#1F8B74]">Supervisión y Bitácoras</span>
-                        <h3 className="font-heading text-2xl font-bold text-[#005A44] uppercase">Avance de Obra & Certificación</h3>
+                        <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#6F899D]">Supervisión y Bitácoras</span>
+                        <h3 className="font-heading text-2xl font-bold text-[#4F6F86] uppercase">Avance de Obra & Certificación</h3>
                         <p className="text-stone-600 text-xs text-light">Mantenemos transparencia absoluta en la bitácora física de cada uno de nuestros complejos residenciales.</p>
                       </div>
 
                       {/* SIMULATED LIVE DRONE / CAMERA FEED FOR COUNTRY CLUB DEVELOPMENTS */}
                       {selectedDevelopment.id === 'veq-countryclub' ? (
-                        <div className="relative rounded-xl border border-[#005A44]/15 bg-black overflow-hidden shadow-2xl">
+                        <div className="relative rounded-xl border border-[#4F6F86]/15 bg-black overflow-hidden shadow-2xl">
                           <div className="aspect-video bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-stone-900 to-black flex flex-col items-center justify-center p-6 text-center group">
                             
                             {/* HUD Overlays (Drone Telemetry) */}
@@ -725,7 +741,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                               <div className="space-y-1 bg-black/60 p-2 rounded backdrop-blur-sm border border-emerald-500/10">
                                 <span className="flex items-center gap-1.5 font-bold uppercase tracking-wider text-emerald-400">
                                   <span className={`h-2 w-2 rounded-full bg-emerald-500 ${isPlayingVideo ? 'animate-ping' : ''}`} />
-                                  ● LIVE DRONE FEED
+                                  â— LIVE DRONE FEED
                                 </span>
                                 <p>CAM: MA-04 4K HLG</p>
                                 <p>ALT: 114m AGL</p>
@@ -743,7 +759,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                             {isPlayingVideo ? (
                               <div className="space-y-4">
                                 <div className="relative">
-                                  <RefreshCw className="h-12 w-12 text-[#1F8B74] animate-spin stroke-1" />
+                                  <RefreshCw className="h-12 w-12 text-[#6F899D] animate-spin stroke-1" />
                                   <span className="absolute inset-0 flex items-center justify-center text-[10px] font-bold font-mono text-white">4K</span>
                                 </div>
                                 <div className="space-y-1">
@@ -770,7 +786,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                                 <span className="font-mono text-[9px] text-stone-500">CANAL LUXENT_property_feed.mov</span>
                               </div>
                               <div className="flex items-center gap-3">
-                                <div className="flex items-center gap-1.5 text-[9px] font-mono text-[#1F8B74] uppercase">
+                                <div className="flex items-center gap-1.5 text-[9px] font-mono text-[#6F899D] uppercase">
                                   <Volume2 className="h-3.5 w-3.5" />
                                   <span>Audio de Obra</span>
                                 </div>
@@ -780,7 +796,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                           </div>
                         </div>
                       ) : (
-                        <div className="relative rounded-xl border border-[#1F8B74]/20 overflow-hidden shadow-lg aspect-video flex flex-col justify-end bg-gradient-to-t from-black to-stone-900 group">
+                        <div className="relative rounded-xl border border-[#6F899D]/20 overflow-hidden shadow-lg aspect-video flex flex-col justify-end bg-gradient-to-t from-black to-stone-900 group">
                           <img 
                             src={selectedDevelopment.image} 
                             alt={selectedDevelopment.name} 
@@ -788,7 +804,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                             referrerPolicy="no-referrer"
                           />
                           <div className="relative p-6 space-y-4 z-10">
-                            <div className="inline-flex items-center gap-2 rounded bg-[#1F8B74]/20 px-3 py-1 border border-[#1F8B74]/30 text-xs font-mono text-white uppercase">
+                            <div className="inline-flex items-center gap-2 rounded bg-[#6F899D]/20 px-3 py-1 border border-[#6F899D]/30 text-xs font-mono text-white uppercase">
                               <Check className="h-3.5 w-3.5" />
                               <span>Complejo Concluido exitosamente</span>
                             </div>
@@ -803,13 +819,13 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                       {/* General/Milestone checklist progress */}
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
-                          <h5 className="font-heading text-sm font-bold uppercase tracking-wider text-[#005A44]">Hitos del Avance Físico</h5>
-                          <span className="font-mono text-xs font-bold text-[#1F8B74]">{getProjectExtraData(selectedDevelopment.id, selectedDevelopment.name).progress}% Completado</span>
+                          <h5 className="font-heading text-sm font-bold uppercase tracking-wider text-[#4F6F86]">Hitos del Avance Físico</h5>
+                          <span className="font-mono text-xs font-bold text-[#6F899D]">{getProjectExtraData(selectedDevelopment.id, selectedDevelopment.name).progress}% Completado</span>
                         </div>
                         {/* Progress Bar */}
                         <div className="h-2 w-full rounded-full bg-stone-100 border border-stone-200 overflow-hidden">
                           <div 
-                            className="h-full rounded-full bg-[#1F8B74] transition-all duration-1000" 
+                            className="h-full rounded-full bg-[#6F899D] transition-all duration-1000" 
                             style={{ width: `${getProjectExtraData(selectedDevelopment.id, selectedDevelopment.name).progress}%` }} 
                           />
                         </div>
@@ -824,7 +840,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                                     <Check className="h-3.5 w-3.5" />
                                   </span>
                                 ) : milestone.status === 'en-proceso' ? (
-                                  <span className="rounded-full bg-[#1F8B74]/15 p-1 text-[#1F8B74] animate-pulse">
+                                  <span className="rounded-full bg-[#6F899D]/15 p-1 text-[#6F899D] animate-pulse">
                                     <RefreshCw className="h-3.5 w-3.5 animate-spin" />
                                   </span>
                                 ) : (
@@ -852,25 +868,25 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                       className="space-y-6"
                     >
                       <div className="space-y-2">
-                        <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#1F8B74]">Directorio de Unidades</span>
-                        <h3 className="font-heading text-2xl font-bold text-[#005A44] uppercase">Inventario y Stock Disponible</h3>
+                        <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#6F899D]">Directorio de Unidades</span>
+                        <h3 className="font-heading text-2xl font-bold text-[#4F6F86] uppercase">Inventario y Stock Disponible</h3>
                         <p className="text-stone-600 text-xs">Haz clic sobre cualquier unidad marcada en <span className="text-emerald-600 font-bold">Disponible</span> para seleccionarla y precargar automáticamente tu mensaje de cotización.</p>
                       </div>
 
                       {/* Display warning or selected indicator */}
                       {selectedUnit ? (
-                        <div className="rounded-xl bg-[#1F8B74]/10 border border-[#1F8B74]/25 p-4 flex gap-3 items-center animate-pulse">
-                          <span className="rounded-full bg-[#1F8B74]/15 p-2 text-[#1F8B74]">
+                        <div className="rounded-xl bg-[#6F899D]/10 border border-[#6F899D]/25 p-4 flex gap-3 items-center animate-pulse">
+                          <span className="rounded-full bg-[#6F899D]/15 p-2 text-[#6F899D]">
                             <Check className="h-4 w-4" />
                           </span>
                           <div className="space-y-0.5 text-xs">
-                            <p className="font-bold text-[#005A44] uppercase">Unidad Seleccionada: {selectedUnit}</p>
+                            <p className="font-bold text-[#4F6F86] uppercase">Unidad Seleccionada: {selectedUnit}</p>
                             <p className="text-[10px] text-stone-600">Hemos redactado una solicitud formal de cotización en el formulario de la derecha.</p>
                           </div>
                         </div>
                       ) : (
                         <div className="rounded-xl bg-stone-50 border border-stone-200 p-4 flex gap-3 items-center">
-                          <span className="rounded-full bg-[#1F8B74]/10 p-2 text-[#1F8B74]">
+                          <span className="rounded-full bg-[#6F899D]/10 p-2 text-[#6F899D]">
                             <Sparkles className="h-4 w-4" />
                           </span>
                           <div className="space-y-0.5 text-xs text-stone-650 leading-tight">
@@ -882,7 +898,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
 
                       {/* Inventory table board */}
                       <div className="space-y-3">
-                        <h5 className="font-heading text-sm font-bold uppercase tracking-wider text-[#005A44]">Unidades de este Desarrollo</h5>
+                        <h5 className="font-heading text-sm font-bold uppercase tracking-wider text-[#4F6F86]">Unidades de este Desarrollo</h5>
                         <div className="grid gap-3 sm:grid-cols-2">
                           {getProjectExtraData(selectedDevelopment.id, selectedDevelopment.name).units.map((unit) => {
                             const isAvailable = unit.status === 'Disponible';
@@ -908,16 +924,16 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                                 onClick={handleUnitClick}
                                 className={`w-full rounded-xl border text-left p-4.5 transition-all duration-300 flex items-center justify-between ${
                                   isSelected
-                                    ? 'border-[#1F8B74] bg-[#1F8B74]/10'
+                                    ? 'border-[#6F899D] bg-[#6F899D]/10'
                                     : !isAvailable
                                     ? 'border-stone-150 bg-stone-50/55 opacity-40 cursor-not-allowed'
                                     : 'border-stone-200 bg-stone-50/20 hover:bg-stone-50 hover:border-stone-300 cursor-pointer'
                                 }`}
                               >
                                 <div className="space-y-1">
-                                  <p className="text-sm font-bold text-[#005A44] font-heading">{unit.code}</p>
+                                  <p className="text-sm font-bold text-[#4F6F86] font-heading">{unit.code}</p>
                                   <p className="text-[10px] text-stone-600 font-mono uppercase tracking-wider">
-                                    {unit.area} m²{unit.bedrooms > 0 ? ` • ${unit.bedrooms} Recámaras` : ' • Gated Lot'}
+                                    {unit.area} m²{unit.bedrooms > 0 ? ` â€¢ ${unit.bedrooms} Recámaras` : ' â€¢ Gated Lot'}
                                   </p>
                                 </div>
                                 <div className="text-right space-y-1">
@@ -928,7 +944,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                                       ? 'bg-yellow-500/10 border border-yellow-500/20 text-yellow-600 font-bold'
                                       : 'bg-stone-100 border border-stone-200 text-stone-500'
                                   }`}>
-                                    {isSelected ? '✔ Seleccionado' : unit.status}
+                                    {isSelected ? 'âœ” Seleccionado' : unit.status}
                                   </span>
                                   {isAvailable && (
                                     <p className="text-xs font-bold text-stone-850 mt-1 font-mono">{unit.price}</p>
@@ -946,7 +962,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                 </div>
 
                 {/* Right Column: Pre-filled contact form */}
-                <div className="p-6 md:p-8 lg:col-span-5 bg-[#FAF8F4] border-l border-stone-200/80 lg:max-h-[90vh] lg:overflow-y-auto">
+                <div className="p-6 md:p-8 lg:col-span-5 bg-[#F3F7FA] border-l border-stone-200/80 lg:max-h-[90vh] lg:overflow-y-auto">
                   <ContactForm
                     title="Solicitar cotización"
                     subtitle={`Déjanos tus datos para agendar una videollamada o visita guiada a ${selectedDevelopment.name}.`}

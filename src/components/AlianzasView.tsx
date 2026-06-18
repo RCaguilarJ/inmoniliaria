@@ -5,7 +5,11 @@
 
 import React from 'react';
 import { Compass, FileText, Globe, Layers, Presentation, Scale, Sparkles, Users } from 'lucide-react';
-import ContactForm from './ContactForm';
+import ContactSection from './ContactSection';
+import PageHero from './PageHero';
+import SectionDivider from './SectionDivider';
+import heroImage from '../assets/images/veq_countryclub_1781741180731.jpg';
+import contactImage from '../assets/images/veq_jack_levy_1781739538027.jpg';
 
 const services = [
   {
@@ -56,28 +60,109 @@ const tools = [
 ];
 
 export default function AlianzasView() {
+  const topServices = services.slice(0, 3);
+  const bottomServices = services.slice(3);
+
   return (
     <div className="relative w-full text-left">
-      <section className="border-b border-[#005A44]/15 bg-[#F3ECE2] px-6 py-20 text-center">
-        <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#1F8B74]">Servicios Luxent</span>
-        <h1 className="mt-2 font-heading text-4xl font-bold text-[#005A44] sm:text-5xl">Comercialización premium con estructura digital</h1>
-        <p className="mx-auto mt-3 max-w-3xl text-sm leading-relaxed text-stone-600">
-          Integramos marketing, diseño, análisis comercial, atención personalizada y herramientas de seguimiento para posicionar propiedades exclusivas y acompañar a cada cliente con precisión.
-        </p>
-      </section>
+      <PageHero
+        image={heroImage}
+        eyebrow="Servicios Luxent"
+        title="Comercialización premium con estructura digital"
+        subtitle="Integramos marketing, diseño, análisis comercial, atención personalizada y herramientas de seguimiento para posicionar propiedades exclusivas y acompañar a cada cliente con precisión."
+      />
 
-      <section className="bg-white px-6 py-20">
+      <section className="bg-veq-dark-pattern px-6 py-20 text-white">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {services.map((service) => {
+          <div className="text-center">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.32em] text-[#DCE7EF]">Servicios estratégicos</span>
+            <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              La base comercial que sostiene cada operación
+            </h2>
+            <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-stone-300">
+              Mantenemos la información real de Luxent, pero la presentamos con una estructura visual editorial: portada, bloques destacados, paneles blancos y cierres de contacto consistentes.
+            </p>
+          </div>
+
+          <SectionDivider inverse className="mt-8" />
+
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            {topServices.map((service) => {
               const Icon = service.icon;
               return (
-                <div key={service.title} className="rounded-2xl border border-stone-200 bg-[#FAF8F4] p-6 shadow-sm">
-                  <div className="w-fit rounded-xl bg-[#1F8B74]/10 p-3 text-[#1F8B74]">
+                <article key={service.title} className="rounded-[28px] border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+                  <div className="inline-flex rounded-2xl bg-white/10 p-3 text-[#DCE7EF]">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="mt-5 font-heading text-xl font-bold text-[#005A44]">{service.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-stone-600">{service.description}</p>
+                  <h3 className="mt-6 font-heading text-2xl font-bold text-white">{service.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-stone-300">{service.description}</p>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="-mt-8 px-6 pb-24">
+        <div className="mx-auto max-w-7xl rounded-[36px] border border-[#D4DEE6] bg-white px-6 py-14 shadow-[0_24px_70px_rgba(79,111,134,0.08)] md:px-10 lg:px-14">
+          <div className="text-center">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.32em] text-[#6F899D]">Metodología, procesos y herramientas</span>
+            <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight text-[#31485C] sm:text-4xl">
+              Operación comercial en tiempo real
+            </h2>
+            <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-stone-600">
+              Administramos leads, ventas y postventa con herramientas que concentran pricing, disponibilidad, documentación, cobranza y seguimiento comercial en una sola operación.
+            </p>
+          </div>
+
+          <SectionDivider className="mt-8" />
+
+          <div className="mt-12 grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <div className="rounded-[28px] bg-veq-dark-pattern p-8 text-white">
+                <span className="font-mono text-xs font-bold uppercase tracking-[0.32em] text-[#DCE7EF]">Análisis comercial</span>
+                <h3 className="mt-4 font-heading text-3xl font-bold">Benchmarking, perfil del cliente y definición de producto</h3>
+                <p className="mt-4 text-sm leading-relaxed text-stone-200">
+                  El análisis de mercado permite definir producto inmobiliario, precios, formas de pago y narrativa comercial con base en zonas objetivo como Country y Las Lomas.
+                </p>
+                <div className="mt-8 rounded-[22px] border border-white/10 bg-white/5 p-5">
+                  <div className="flex items-start gap-3">
+                    <Scale className="mt-0.5 h-5 w-5 text-[#DCE7EF]" />
+                    <div>
+                      <h4 className="font-heading text-xl font-bold text-white">Asesoramiento jurídico</h4>
+                      <p className="mt-2 text-sm leading-relaxed text-stone-300">
+                        Acompañamiento al desarrollador y al cliente desde la gestación del proyecto inmobiliario hasta la escrituración y la postventa.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+              {tools.map((tool) => (
+                <div key={tool} className="rounded-[22px] border border-[#D4DEE6] bg-[#F8FBFD] p-5 shadow-sm">
+                  <div className="flex items-start gap-3">
+                    <span className="mt-0.5 inline-flex rounded-full bg-[#6F899D]/10 p-2 text-[#6F899D]">
+                      <FileText className="h-4 w-4" />
+                    </span>
+                    <p className="text-sm leading-relaxed text-stone-700">{tool}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-14 grid gap-6 lg:grid-cols-3">
+            {bottomServices.map((service) => {
+              const Icon = service.icon;
+              return (
+                <div key={service.title} className="rounded-[24px] border border-[#D4DEE6] bg-white p-6 shadow-sm">
+                  <div className="inline-flex rounded-2xl bg-[#6F899D]/10 p-3 text-[#6F899D]">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-5 font-heading text-2xl font-bold text-[#31485C]">{service.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-stone-600">{service.description}</p>
                 </div>
               );
             })}
@@ -85,74 +170,27 @@ export default function AlianzasView() {
         </div>
       </section>
 
-      <section className="border-y border-[#005A44]/15 bg-[#F3ECE2] px-6 py-24">
-        <div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-5 space-y-4">
-            <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#1F8B74]">Metodología, procesos y herramientas</span>
-            <h2 className="font-heading text-3xl font-bold text-[#005A44] sm:text-4xl">Operación comercial en tiempo real</h2>
-            <p className="text-sm leading-relaxed text-stone-600">
-              Administramos leads, ventas y postventa con herramientas que concentran pricing, disponibilidad, documentación, cobranza y seguimiento comercial en una sola operación.
-            </p>
-
-            <div className="rounded-2xl border border-[#005A44]/12 bg-white p-6 shadow-sm">
-              <div className="flex items-start gap-3">
-                <Scale className="mt-0.5 h-5 w-5 text-[#1F8B74]" />
-                <div>
-                  <h3 className="font-heading text-lg font-bold text-[#005A44]">Asesoramiento jurídico</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-stone-600">
-                    Acompañamiento al desarrollador y al cliente desde la gestación del proyecto inmobiliario hasta la escrituración y la postventa.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
-            {tools.map((tool) => (
-              <div key={tool} className="rounded-2xl border border-white/70 bg-white p-5 shadow-sm">
-                <div className="flex items-start gap-3">
-                  <FileText className="mt-0.5 h-4 w-4 text-[#1F8B74]" />
-                  <p className="text-sm leading-relaxed text-stone-700">{tool}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+      <section className="bg-veq-dark-pattern px-6 py-20 text-white">
+        <div className="mx-auto max-w-5xl rounded-[30px] border border-white/10 bg-black/10 p-8 text-center md:p-12">
+          <span className="font-mono text-xs font-bold uppercase tracking-[0.32em] text-[#DCE7EF]">Infraestructura Luxent</span>
+          <h2 className="mt-4 font-heading text-4xl font-bold tracking-tight text-white">
+            Un espacio que transmite confianza y acelera decisiones
+          </h2>
+          <p className="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-stone-200">
+            Luxent funciona como carta de presentación de nuestros desarrollos y genera la confianza necesaria para concretar operaciones con claridad comercial, soporte documental y seguimiento puntual.
+          </p>
         </div>
       </section>
 
-      <section className="bg-white px-6 py-24">
-        <div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-12 lg:items-center">
-          <div className="lg:col-span-6 space-y-6">
-            <div>
-              <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#1F8B74]">Análisis comercial</span>
-              <h2 className="mt-2 font-heading text-3xl font-bold text-[#005A44] sm:text-4xl">Benchmarking, perfil del cliente y definición de producto</h2>
-              <p className="mt-3 text-sm leading-relaxed text-stone-600">
-                El análisis de mercado permite definir producto inmobiliario, precios, formas de pago y narrativa comercial con base en zonas objetivo como Country y Las Lomas.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-[#005A44]/12 bg-[#FAF8F4] p-6">
-              <div className="flex items-start gap-3">
-                <Layers className="mt-0.5 h-5 w-5 text-[#1F8B74]" />
-                <div>
-                  <h3 className="font-heading text-lg font-bold text-[#005A44]">Infraestructura Luxent</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-stone-600">
-                    Un espacio que funciona como carta de presentación de nuestros desarrollos y genera la confianza necesaria para concretar operaciones.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="lg:col-span-6">
-            <ContactForm
-              title="Solicitar asesoría Luxent"
-              subtitle="Cuéntanos si necesitas comercializar una propiedad, estructurar su salida al mercado o recibir acompañamiento comercial y jurídico."
-              defaultType="general"
-            />
-          </div>
-        </div>
-      </section>
+      <ContactSection
+        title="Contacta con nuestros asesores"
+        subtitle="Cuéntanos si necesitas comercializar una propiedad, estructurar su salida al mercado o recibir acompañamiento comercial y jurídico."
+        formTitle="Solicitar asesoría Luxent"
+        formSubtitle="Comparte el contexto de tu proyecto o propiedad y te contactaremos con el especialista adecuado."
+        defaultType="general"
+        image={contactImage}
+        imageAlt="Luxent"
+      />
     </div>
   );
 }

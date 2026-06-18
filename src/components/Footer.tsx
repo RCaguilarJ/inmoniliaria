@@ -1,10 +1,10 @@
-/**
+﻿/**
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
 
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, ChevronRight, Inbox, Landmark } from 'lucide-react';
+import { Mail, Phone, MapPin, ChevronRight } from 'lucide-react';
 import CountryClubLogo from './CountryClubLogo';
 
 interface FooterProps {
@@ -31,122 +31,104 @@ export default function Footer({ activeTab, setActiveTab }: FooterProps) {
   };
 
   return (
-    <footer className="w-full border-t border-[#005A44]/15 bg-[#00120e] text-[#8CC5C3]/80">
-      <div className="border-b border-white/10 px-6 py-12">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div className="space-y-1">
-            <h4 className="font-heading text-lg font-bold tracking-wider text-white uppercase">LUXENT</h4>
-            <p className="text-sm text-stone-300">Comercialización de propiedades exclusivas con enfoque premium, digital y personalizado.</p>
-          </div>
-          <div className="flex flex-wrap gap-4 text-xs font-mono">
-            <span className="rounded border border-[#1F8B74]/30 bg-[#1F8B74]/20 px-3 py-1.5 text-white">• Segmento Premium</span>
-            <span className="rounded border border-[#8CC5C3]/20 bg-[#8CC5C3]/10 px-3 py-1.5 text-[#8CC5C3]">• Experiencia Digital</span>
-          </div>
-        </div>
-      </div>
-
+    <footer className="bg-veq-dark-pattern text-[#DCE7EF]/85">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-2 lg:grid-cols-4">
         <div className="space-y-5">
           <div className="flex items-center gap-2.5">
-            <div className="h-9 w-9 rounded-lg border border-white/10 bg-[#001c15] p-1">
+            <div className="h-9 w-9 rounded-lg border border-white/10 bg-white/8 p-1">
               <CountryClubLogo className="h-full w-full" showText={false} />
             </div>
             <div className="flex flex-col">
               <span className="font-heading text-sm font-extrabold tracking-wider text-white">LUXENT</span>
-              <span className="font-mono text-[7px] tracking-widest text-[#8CC5C3] uppercase">PREMIUM PROPERTIES</span>
+              <span className="font-mono text-[7px] tracking-widest text-[#DCE7EF] uppercase">PROPERTIES</span>
             </div>
           </div>
           <p className="pr-4 text-xs font-light leading-relaxed text-stone-300">
             Especialistas en comercialización de propiedades exclusivas, marketing inmobiliario y herramientas digitales para ventas y postventa.
           </p>
-          <div className="flex items-center gap-1.5 font-mono text-[10px] text-stone-400">
-            <Landmark className="h-3.5 w-3.5 text-[#8CC5C3]" />
-            <span>Asesoría premium • marketing • operación digital</span>
-          </div>
         </div>
 
         <div className="space-y-4">
-          <h5 className="font-heading text-xs font-bold tracking-widest text-[#8CC5C3] uppercase">Navegación</h5>
+          <h5 className="font-heading text-xs font-bold tracking-widest text-[#DCE7EF] uppercase">Navegación</h5>
           <nav className="flex flex-col gap-2.5 text-xs text-stone-300">
-            <button onClick={() => handleFooterLinkClick('inicio')} className="flex items-center gap-1 text-left transition-colors hover:text-[#8CC5C3]" id="btn-foot-link-inicio">
-              <ChevronRight className="h-3 w-3 text-[#1F8B74]" /> Inicio
+            <button onClick={() => handleFooterLinkClick('inicio')} className="flex items-center gap-1 text-left transition-colors hover:text-[#DCE7EF]" id="btn-foot-link-inicio">
+              <ChevronRight className="h-3 w-3 text-[#6F899D]" /> Inicio
             </button>
-            <button onClick={() => handleFooterLinkClick('nosotros')} className="flex items-center gap-1 text-left transition-colors hover:text-[#8CC5C3]" id="btn-foot-link-nosotros">
-              <ChevronRight className="h-3 w-3 text-[#1F8B74]" /> Nosotros
+            <button onClick={() => handleFooterLinkClick('nosotros')} className="flex items-center gap-1 text-left transition-colors hover:text-[#DCE7EF]" id="btn-foot-link-nosotros">
+              <ChevronRight className="h-3 w-3 text-[#6F899D]" /> Nosotros
             </button>
-            <button onClick={() => handleFooterLinkClick('desarrollos')} className="flex items-center gap-1 text-left transition-colors hover:text-[#8CC5C3]" id="btn-foot-link-desarrollos">
-              <ChevronRight className="h-3 w-3 text-[#1F8B74]" /> Propiedades
+            <button onClick={() => handleFooterLinkClick('desarrollos')} className="flex items-center gap-1 text-left transition-colors hover:text-[#DCE7EF]" id="btn-foot-link-desarrollos">
+              <ChevronRight className="h-3 w-3 text-[#6F899D]" /> Propiedades
             </button>
-            <button onClick={() => handleFooterLinkClick('alianzas')} className="flex items-center gap-1 text-left transition-colors hover:text-[#8CC5C3]" id="btn-foot-link-alianzas">
-              <ChevronRight className="h-3 w-3 text-[#1F8B74]" /> Servicios
+            <button onClick={() => handleFooterLinkClick('alianzas')} className="flex items-center gap-1 text-left transition-colors hover:text-[#DCE7EF]" id="btn-foot-link-alianzas">
+              <ChevronRight className="h-3 w-3 text-[#6F899D]" /> Servicios
             </button>
-            <button onClick={() => handleFooterLinkClick('blog')} className="flex items-center gap-1 text-left transition-colors hover:text-[#8CC5C3]" id="btn-foot-link-blog">
-              <ChevronRight className="h-3 w-3 text-[#1F8B74]" /> Insights
+            <button onClick={() => handleFooterLinkClick('blog')} className="flex items-center gap-1 text-left transition-colors hover:text-[#DCE7EF]" id="btn-foot-link-blog">
+              <ChevronRight className="h-3 w-3 text-[#6F899D]" /> Insights
             </button>
           </nav>
         </div>
 
-        <div className="space-y-4 text-xs text-stone-350">
-          <h5 className="font-heading text-xs font-bold tracking-widest text-[#8CC5C3] uppercase">Contacto</h5>
+        <div className="space-y-4 text-xs">
+          <h5 className="font-heading text-xs font-bold tracking-widest text-[#DCE7EF] uppercase">Contacto</h5>
           <div className="space-y-3.5 font-light leading-relaxed text-stone-300">
             <p className="flex items-start gap-2">
-              <MapPin className="h-4 w-4 shrink-0 text-[#1F8B74]" />
+              <MapPin className="h-4 w-4 shrink-0 text-[#6F899D]" />
               <span>Av. Américas 1930-PB, Country Club, 44668, Guadalajara, Jalisco.</span>
             </p>
             <p className="flex items-center gap-2">
-              <Phone className="h-4 w-4 shrink-0 text-[#1F8B74]" />
+              <Phone className="h-4 w-4 shrink-0 text-[#6F899D]" />
               <span>33 1142 9932</span>
             </p>
             <p className="flex items-center gap-2">
-              <Mail className="h-4 w-4 shrink-0 text-[#1F8B74]" />
+              <Mail className="h-4 w-4 shrink-0 text-[#6F899D]" />
               <span>gerencia@luxent.properties</span>
             </p>
           </div>
         </div>
 
         <div className="space-y-4">
-          <h5 className="font-heading text-xs font-bold tracking-widest text-[#8CC5C3] uppercase">Boletín Luxent</h5>
+          <h5 className="font-heading text-xs font-bold tracking-widest text-[#DCE7EF] uppercase">Boletín Luxent</h5>
           <p className="text-xs font-light leading-relaxed text-stone-300">
             Suscríbete para recibir novedades de mercado, propiedades premium y herramientas de comercialización.
           </p>
 
           {subscribed ? (
-            <div className="rounded-lg border border-[#1F8B74]/30 bg-[#1F8B74]/20 p-3 text-center text-xs font-semibold text-white">
-              ✔ Correo suscrito con éxito
+            <div className="rounded-lg border border-[#6F899D]/30 bg-[#6F899D]/20 p-3 text-center text-xs font-semibold text-white">
+              Correo suscrito con éxito
             </div>
           ) : (
             <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
-              <div className="relative">
+              <div className="flex overflow-hidden rounded-md border border-white/10 bg-white/5">
                 <input
                   type="email"
                   required
                   placeholder="correo@dominio.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full rounded-lg border border-white/10 bg-[#001c15] p-3 pr-10 text-xs text-white placeholder-stone-500 outline-none focus:border-[#1F8B74]"
+                  className="w-full border-0 bg-transparent px-3 py-3 text-xs text-white placeholder-stone-500 outline-none"
                   id="foot-newsletter"
                 />
-                <Inbox className="absolute right-3 top-3.5 h-4 w-4 text-stone-400" />
+                <button
+                  type="submit"
+                  id="btn-foot-newsletter"
+                  className="border-l border-white/10 bg-[#6F899D] px-4 text-center text-xs font-bold tracking-wider text-white uppercase transition-all hover:bg-[#DCE7EF] hover:text-[#31485C]"
+                >
+                  →
+                </button>
               </div>
-              <button
-                type="submit"
-                id="btn-foot-newsletter"
-                className="w-full rounded-lg bg-[#1F8B74] py-2.5 text-center text-xs font-bold tracking-wider text-white uppercase transition-all hover:bg-[#8CC5C3] hover:text-[#00120e]"
-              >
-                Suscribirme
-              </button>
             </form>
           )}
         </div>
       </div>
 
-      <div className="border-t border-white/10 bg-[#000a08]/80 px-6 py-6 font-mono text-[10px] text-stone-400">
+      <div className="border-t border-white/10 px-6 py-6 font-mono text-[10px] text-stone-400">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Luxent. Todos los derechos reservados. La información y los materiales visuales están sujetos a actualización comercial.</p>
           <div className="flex gap-4">
-            <a href="#privacidad" className="hover:text-[#8CC5C3]">Aviso de Privacidad</a>
+            <a href="#privacidad" className="hover:text-[#DCE7EF]">Aviso de Privacidad</a>
             <span>•</span>
-            <a href="#terminos" className="hover:text-[#8CC5C3]">Términos y Condiciones</a>
+            <a href="#terminos" className="hover:text-[#DCE7EF]">Términos y Condiciones</a>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -13,6 +13,7 @@ interface ContactFormProps {
   defaultType?: 'general' | 'terreno' | 'desarrollo';
   developmentName?: string;
   customMessage?: string;
+  surface?: 'card' | 'plain';
 }
 
 export default function ContactForm({
@@ -20,7 +21,8 @@ export default function ContactForm({
   subtitle = 'Llena el formulario y un asesor se pondrá en contacto contigo para atender tu consulta comercial.',
   defaultType = 'general',
   developmentName,
-  customMessage
+  customMessage,
+  surface = 'card'
 }: ContactFormProps) {
   const [formData, setFormData] = useState({
     name: '',
@@ -40,6 +42,7 @@ export default function ContactForm({
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const isCard = surface === 'card';
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -69,23 +72,23 @@ export default function ContactForm({
   };
 
   return (
-    <div className="w-full rounded-2xl border border-[#005A44]/15 bg-white p-6 shadow-xl md:p-8" id="contact-panel">
+    <div className={`${isCard ? 'rounded-2xl border border-[#4F6F86]/15 bg-white p-6 shadow-xl md:p-8' : ''} w-full`} id="contact-panel">
       {submitted ? (
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           className="flex flex-col items-center justify-center py-12 text-center"
         >
-          <div className="rounded-full bg-[#1F8B74]/15 p-4 text-[#1F8B74]">
+          <div className="rounded-full bg-[#6F899D]/15 p-4 text-[#6F899D]">
             <CheckCircle2 className="h-14 w-14 animate-pulse" />
           </div>
-          <h3 className="mt-6 font-heading text-2xl font-bold text-[#005A44]">¡Mensaje recibido!</h3>
+          <h3 className="mt-6 font-heading text-2xl font-bold text-[#4F6F86]">¡Mensaje recibido!</h3>
           <p className="mx-auto mt-3 max-w-sm text-sm text-stone-600">
-            Gracias <span className="font-semibold text-[#005A44]">{formData.name}</span>, hemos registrado tu solicitud con éxito.
+            Gracias <span className="font-semibold text-[#4F6F86]">{formData.name}</span>, hemos registrado tu solicitud con éxito.
           </p>
 
-          <div className="mt-8 w-full rounded-xl border border-[#005A44]/12 bg-[#FAF8F4] p-5 text-left text-xs text-stone-700">
-            <p className="border-b border-stone-200 pb-2 font-semibold uppercase tracking-wider text-[#1F8B74]">Detalles del ticket</p>
+          <div className="mt-8 w-full rounded-xl border border-[#4F6F86]/12 bg-[#F3F7FA] p-5 text-left text-xs text-stone-700">
+            <p className="border-b border-stone-200 pb-2 font-semibold uppercase tracking-wider text-[#6F899D]">Detalles del ticket</p>
             <div className="mt-2.5 space-y-1.5 font-mono">
               <p><span className="text-stone-500">Motivo:</span> {formData.type === 'terreno' ? 'Comercialización de Proyecto' : formData.type === 'desarrollo' ? 'Interés en Propiedad' : 'Asesoría General'}</p>
               {developmentName && <p><span className="text-stone-500">Propiedad:</span> {developmentName}</p>}
@@ -97,7 +100,7 @@ export default function ContactForm({
 
           <button
             onClick={handleReset}
-            className="mt-8 rounded-full border border-[#1F8B74]/30 bg-transparent px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-stone-700 transition-all hover:bg-[#1F8B74]/10 hover:text-[#1F8B74]"
+            className="mt-8 rounded-full border border-[#6F899D]/30 bg-transparent px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-stone-700 transition-all hover:bg-[#6F899D]/10 hover:text-[#6F899D]"
             id="btn-contact-reset"
           >
             Enviar otra consulta
@@ -106,13 +109,13 @@ export default function ContactForm({
       ) : (
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-1 text-left">
-            <h3 className="font-heading text-2xl font-bold tracking-tight text-[#005A44]">{title}</h3>
+            <h3 className="font-heading text-2xl font-bold tracking-tight text-[#4F6F86]">{title}</h3>
             <p className="font-light text-sm text-stone-605">{subtitle}</p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-1.5 text-left">
-              <label htmlFor="input-name" className="text-[10px] font-bold uppercase tracking-wider text-[#415A52]/90">Nombre completo *</label>
+              <label htmlFor="input-name" className="text-[10px] font-bold uppercase tracking-wider text-[#567082]/90">Nombre completo *</label>
               <input
                 id="input-name"
                 type="text"
@@ -120,12 +123,12 @@ export default function ContactForm({
                 placeholder="Ej. Nombre Apellido"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full rounded-lg border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-stone-900 placeholder-stone-405 outline-none transition-all focus:border-[#1F8B74] focus:ring-1 focus:ring-[#1F8B74]"
+                className="w-full rounded-lg border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-stone-900 placeholder-stone-405 outline-none transition-all focus:border-[#6F899D] focus:ring-1 focus:ring-[#6F899D]"
               />
             </div>
 
             <div className="space-y-1.5 text-left">
-              <label htmlFor="input-phone" className="text-[10px] font-bold uppercase tracking-wider text-[#415A52]/90">Teléfono de contacto *</label>
+              <label htmlFor="input-phone" className="text-[10px] font-bold uppercase tracking-wider text-[#567082]/90">Teléfono de contacto *</label>
               <input
                 id="input-phone"
                 type="tel"
@@ -133,13 +136,13 @@ export default function ContactForm({
                 placeholder="Ej. 33 1142 9932"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full rounded-lg border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-stone-900 placeholder-stone-405 outline-none transition-all focus:border-[#1F8B74] focus:ring-1 focus:ring-[#1F8B74]"
+                className="w-full rounded-lg border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-stone-900 placeholder-stone-405 outline-none transition-all focus:border-[#6F899D] focus:ring-1 focus:ring-[#6F899D]"
               />
             </div>
           </div>
 
           <div className="space-y-1.5 text-left">
-            <label htmlFor="input-email" className="text-[10px] font-bold uppercase tracking-wider text-[#415A52]/90">E-mail *</label>
+            <label htmlFor="input-email" className="text-[10px] font-bold uppercase tracking-wider text-[#567082]/90">E-mail *</label>
             <input
               id="input-email"
               type="email"
@@ -147,19 +150,19 @@ export default function ContactForm({
               placeholder="ejemplo@correo.com"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full rounded-lg border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-stone-900 placeholder-stone-405 outline-none transition-all focus:border-[#1F8B74] focus:ring-1 focus:ring-[#1F8B74]"
+              className="w-full rounded-lg border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-stone-900 placeholder-stone-405 outline-none transition-all focus:border-[#6F899D] focus:ring-1 focus:ring-[#6F899D]"
             />
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-1.5 text-left">
-              <label htmlFor="select-type" className="text-[10px] font-bold uppercase tracking-wider text-[#415A52]/90">Área de interés</label>
+              <label htmlFor="select-type" className="text-[10px] font-bold uppercase tracking-wider text-[#567082]/90">Área de interés</label>
               <div className="relative">
                 <select
                   id="select-type"
                   value={formData.type}
                   onChange={(e: any) => setFormData({ ...formData, type: e.target.value, message: e.target.value === 'terreno' ? 'Quiero comercializar un proyecto o propiedad dentro del segmento premium...' : formData.message })}
-                  className="w-full appearance-none rounded-lg border border-stone-200 bg-stone-50 px-4 py-3 pr-10 text-sm text-stone-900 outline-none transition-all focus:border-[#1F8B74]"
+                  className="w-full appearance-none rounded-lg border border-stone-200 bg-stone-50 px-4 py-3 pr-10 text-sm text-stone-900 outline-none transition-all focus:border-[#6F899D]"
                 >
                   <option value="general" className="bg-white">Quiero Asesoría</option>
                   <option value="desarrollo" className="bg-white">Comprar / Rentar Propiedad</option>
@@ -170,13 +173,13 @@ export default function ContactForm({
             </div>
 
             <div className="space-y-1.5 text-left">
-              <label htmlFor="select-city" className="text-[10px] font-bold uppercase tracking-wider text-[#415A52]/90">Ciudad</label>
+              <label htmlFor="select-city" className="text-[10px] font-bold uppercase tracking-wider text-[#567082]/90">Ciudad</label>
               <div className="relative">
                 <select
                   id="select-city"
                   value={formData.city}
                   onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                  className="w-full appearance-none rounded-lg border border-stone-200 bg-stone-50 px-4 py-3 pr-10 text-sm text-stone-900 outline-none transition-all focus:border-[#1F8B74]"
+                  className="w-full appearance-none rounded-lg border border-stone-200 bg-stone-50 px-4 py-3 pr-10 text-sm text-stone-900 outline-none transition-all focus:border-[#6F899D]"
                 >
                   <option value="Guadalajara" className="bg-white">Guadalajara</option>
                   <option value="Cancún" className="bg-white">Cancún</option>
@@ -193,14 +196,14 @@ export default function ContactForm({
           </div>
 
           <div className="space-y-1.5 text-left">
-            <label htmlFor="text-message" className="text-[10px] font-bold uppercase tracking-wider text-[#415A52]/90">Mensaje</label>
+            <label htmlFor="text-message" className="text-[10px] font-bold uppercase tracking-wider text-[#567082]/90">Mensaje</label>
             <textarea
               id="text-message"
               rows={3}
               placeholder="Escribe aquí tus dudas o detalles específicos de tu consulta..."
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="w-full resize-none rounded-lg border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-stone-900 placeholder-stone-405 outline-none transition-all focus:border-[#1F8B74] focus:ring-1 focus:ring-[#1F8B74]"
+              className="w-full resize-none rounded-lg border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-stone-900 placeholder-stone-405 outline-none transition-all focus:border-[#6F899D] focus:ring-1 focus:ring-[#6F899D]"
             />
           </div>
 
@@ -210,7 +213,7 @@ export default function ContactForm({
               type="checkbox"
               checked={formData.newsletter}
               onChange={(e) => setFormData({ ...formData, newsletter: e.target.checked })}
-              className="mt-1 h-4 w-4 rounded border-stone-300 text-[#1F8B74] focus:ring-[#1F8B74]"
+              className="mt-1 h-4 w-4 rounded border-stone-300 text-[#6F899D] focus:ring-[#6F899D]"
             />
             <label htmlFor="checkbox-newsletter" className="text-[11px] leading-tight text-stone-500">
               Acepto los términos de privacidad y deseo recibir actualizaciones periódicas sobre propiedades premium, herramientas comerciales y novedades de Luxent.
@@ -221,7 +224,7 @@ export default function ContactForm({
             type="submit"
             id="btn-contact-submit"
             disabled={isSubmitting}
-            className="flex w-full items-center justify-center gap-2.5 rounded-lg bg-[#1F8B74] px-6 py-4.5 text-sm font-semibold tracking-wider text-white uppercase shadow-lg shadow-[#1F8B74]/15 transition-all duration-300 hover:bg-[#005A44] active:scale-98 disabled:opacity-50"
+            className="flex w-full items-center justify-center gap-2.5 rounded-lg bg-[#6F899D] px-6 py-4.5 text-sm font-semibold tracking-wider text-white uppercase shadow-lg shadow-[#6F899D]/15 transition-all duration-300 hover:bg-[#4F6F86] active:scale-98 disabled:opacity-50"
           >
             {isSubmitting ? 'Registrando datos...' : 'Enviar mensaje'}
             <Send className="h-4 w-4" />

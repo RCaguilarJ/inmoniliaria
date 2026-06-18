@@ -4,13 +4,19 @@
  */
 
 import React from 'react';
-import { Compass, Eye, FileText, Globe, Layers, Scale, ShieldCheck, Sparkles, Users } from 'lucide-react';
+import { Compass, FileText, Globe, Layers, Scale, ShieldCheck, Sparkles, Users } from 'lucide-react';
+import { INITIATIVES_DATA } from '../data';
+import ContactSection from './ContactSection';
+import PageHero from './PageHero';
+import SectionDivider from './SectionDivider';
+import heroImage from '../assets/images/veq_hero_towers_1781739523649.jpg';
+import profileImage from '../assets/images/veq_jack_levy_1781739538027.jpg';
 
 const differentiators = [
   {
     title: 'Segmento premium',
     description: 'Enfocados en la comercialización de propiedades de lujo residenciales, comerciales y exclusivas.',
-    icon: Eye,
+    icon: Compass,
   },
   {
     title: 'Experiencia digital',
@@ -42,93 +48,132 @@ const differentiators = [
 export default function NosotrosView() {
   return (
     <div className="relative w-full">
-      <section className="border-b border-[#005A44]/15 bg-[#F3ECE2] px-6 py-20">
-        <div className="mx-auto max-w-6xl text-center space-y-3">
-          <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#1F8B74]">Quiénes somos</span>
-          <h1 className="font-heading text-4xl font-bold text-[#005A44] sm:text-5xl">Luxent</h1>
-          <p className="mx-auto max-w-3xl text-sm leading-relaxed text-stone-600">
-            En Luxent nos especializamos en la comercialización de propiedades exclusivas dentro del segmento premium. Con un enfoque innovador y personalizado, ofrecemos experiencias únicas y soluciones inmobiliarias de alta gama para clientes exigentes.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        image={heroImage}
+        eyebrow="Quiénes somos"
+        title="Luxent"
+        subtitle="Nos especializamos en la comercialización de propiedades exclusivas dentro del segmento premium, con un enfoque innovador, digital y personalizado."
+      />
 
-      <section className="bg-white px-6 py-20">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-8 lg:grid-cols-2">
-            <div className="rounded-2xl border border-[#005A44]/12 bg-[#FAF8F4] p-8 shadow-sm">
-              <div className="flex items-center gap-3 text-[#1F8B74]">
-                <Compass className="h-5 w-5" />
-                <span className="font-mono text-xs font-bold uppercase tracking-widest">Objetivo</span>
-              </div>
-              <h2 className="mt-4 font-heading text-3xl font-bold text-[#005A44]">Asesoría integral con base comercial y digital</h2>
-              <p className="mt-4 text-sm leading-relaxed text-stone-600">
+      <section className="bg-veq-dark-pattern px-6 py-20 text-white">
+        <div className="mx-auto grid max-w-7xl overflow-hidden rounded-[34px] border border-white/10 bg-black/10 lg:grid-cols-2">
+          <div className="p-8 md:p-12">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.32em] text-[#DCE7EF]">Perfil Luxent</span>
+            <h2 className="mt-4 font-heading text-4xl font-bold tracking-tight text-white">Asesoría integral con base comercial y digital</h2>
+            <div className="mt-6 space-y-4 text-sm leading-relaxed text-stone-200">
+              <p>
                 Nuestro objetivo es combinar conocimiento profundo del mercado inmobiliario con las últimas tendencias tecnológicas y digitales. A través de atención al detalle, marketing, diseño y comunicación digital, facilitamos la compra, venta y alquiler de propiedades que redefinen el lujo.
               </p>
-            </div>
-
-            <div className="rounded-2xl border border-[#005A44]/12 bg-[#00120e] p-8 shadow-sm">
-              <div className="flex items-center gap-3 text-[#8CC5C3]">
-                <FileText className="h-5 w-5" />
-                <span className="font-mono text-xs font-bold uppercase tracking-widest">Infraestructura</span>
-              </div>
-              <h2 className="mt-4 font-heading text-3xl font-bold text-white">La carta de presentación de nuestros desarrollos</h2>
-              <p className="mt-4 text-sm leading-relaxed text-stone-300">
+              <p>
                 Luxent se ha convertido en un espacio donde los clientes se sienten en casa y encuentran la confianza necesaria para avanzar en la compra de proyectos inmobiliarios premium.
               </p>
+              <p>
+                Brindamos acompañamiento integral desde la definición comercial del producto hasta la escrituración y la postventa, con una operación pensada para clientes de alto perfil y desarrollos de alto valor.
+              </p>
             </div>
+          </div>
+
+          <div className="min-h-[420px]">
+            <img
+              src={profileImage}
+              alt="Perfil Luxent"
+              className="h-full w-full object-cover"
+              referrerPolicy="no-referrer"
+            />
           </div>
         </div>
       </section>
 
-      <section className="border-y border-[#005A44]/15 bg-[#F3ECE2] px-6 py-20">
-        <div className="mx-auto max-w-7xl">
+      <section className="-mt-8 px-6 pb-24">
+        <div className="mx-auto max-w-7xl rounded-[36px] border border-[#D4DEE6] bg-white px-6 py-14 shadow-[0_24px_70px_rgba(79,111,134,0.08)] md:px-10 lg:px-14">
           <div className="text-center">
-            <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#1F8B74]">Qué nos diferencia</span>
-            <h2 className="mt-2 font-heading text-3xl font-bold text-[#005A44]">Excelencia comercial, visual y operativa</h2>
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.32em] text-[#6F899D]">Qué nos diferencia</span>
+            <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight text-[#31485C] sm:text-4xl">
+              Excelencia comercial, visual y operativa
+            </h2>
           </div>
+
+          <SectionDivider className="mt-8" />
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {differentiators.map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.title} className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
-                  <div className="w-fit rounded-lg bg-[#1F8B74]/10 p-3 text-[#1F8B74]">
+                <div key={item.title} className="rounded-[24px] border border-[#D4DEE6] bg-[#F8FBFD] p-6">
+                  <div className="inline-flex rounded-2xl bg-[#6F899D]/10 p-3 text-[#6F899D]">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="mt-5 font-heading text-xl font-bold text-[#005A44]">{item.title}</h3>
+                  <h3 className="mt-5 font-heading text-xl font-bold text-[#31485C]">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-stone-600">{item.description}</p>
                 </div>
               );
             })}
           </div>
+
+          <div className="mt-16">
+            <div className="text-center">
+              <span className="font-mono text-xs font-bold uppercase tracking-[0.32em] text-[#6F899D]">Nuestras iniciativas</span>
+              <h3 className="mt-3 font-heading text-3xl font-bold text-[#31485C]">Líneas de trabajo que sostienen la experiencia Luxent</h3>
+            </div>
+
+            <div className="mt-10 grid gap-6 lg:grid-cols-3">
+              {INITIATIVES_DATA.map((initiative) => (
+                <article key={initiative.id} className="overflow-hidden rounded-[28px] border border-[#D4DEE6] bg-white shadow-sm">
+                  <div className="grid md:grid-cols-[1.15fr_1fr] lg:grid-cols-1">
+                    <img
+                      src={initiative.image}
+                      alt={initiative.title}
+                      className="h-full min-h-[260px] w-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="bg-veq-dark-pattern p-6 text-white">
+                      <h4 className="font-heading text-3xl font-bold">{initiative.title}</h4>
+                      <p className="mt-3 text-sm leading-relaxed text-stone-200">{initiative.description}</p>
+                      <p className="mt-4 border-t border-white/10 pt-4 text-xs leading-relaxed text-[#DCE7EF]">{initiative.impact}</p>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-12 grid gap-6 lg:grid-cols-2">
+              <div className="rounded-[24px] border border-[#D4DEE6] bg-[#F8FBFD] p-6">
+                <div className="flex items-start gap-3">
+                  <FileText className="mt-0.5 h-5 w-5 text-[#6F899D]" />
+                  <div>
+                    <h4 className="font-heading text-2xl font-bold text-[#31485C]">Estudios y análisis de mercado</h4>
+                    <p className="mt-3 text-sm leading-relaxed text-stone-600">
+                      Trabajamos con análisis enfocados en Zona Country, Las Lomas y perfil del cliente para ayudar a definir producto inmobiliario, precios y formas de pago con mayor precisión comercial.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-[24px] border border-[#D4DEE6] bg-[#F8FBFD] p-6">
+                <div className="flex items-start gap-3">
+                  <Scale className="mt-0.5 h-5 w-5 text-[#6F899D]" />
+                  <div>
+                    <h4 className="font-heading text-2xl font-bold text-[#31485C]">Asesoramiento jurídico</h4>
+                    <p className="mt-3 text-sm leading-relaxed text-stone-600">
+                      Brindamos asesoramiento y acompañamiento al desarrollador y al cliente desde la etapa de gestación del proyecto inmobiliario hasta la escrituración y el seguimiento posterior.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="bg-white px-6 py-24">
-        <div className="mx-auto max-w-7xl grid gap-8 lg:grid-cols-2">
-          <div className="rounded-2xl border border-[#005A44]/12 bg-[#FAF8F4] p-8 shadow-sm">
-            <div className="flex items-center gap-3 text-[#1F8B74]">
-              <Layers className="h-5 w-5" />
-              <span className="font-mono text-xs font-bold uppercase tracking-widest">Estudios y análisis de mercado</span>
-            </div>
-            <h3 className="mt-4 font-heading text-2xl font-bold text-[#005A44]">Benchmarking y definición de producto</h3>
-            <p className="mt-4 text-sm leading-relaxed text-stone-600">
-              Trabajamos con análisis enfocados en Zona Country, Las Lomas y perfil del cliente para ayudar a definir producto inmobiliario, precios y formas de pago con mayor precisión comercial.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-[#005A44]/12 bg-[#FAF8F4] p-8 shadow-sm">
-            <div className="flex items-center gap-3 text-[#1F8B74]">
-              <Scale className="h-5 w-5" />
-              <span className="font-mono text-xs font-bold uppercase tracking-widest">Asesoramiento jurídico</span>
-            </div>
-            <h3 className="mt-4 font-heading text-2xl font-bold text-[#005A44]">Acompañamiento desde la gestación hasta la postventa</h3>
-            <p className="mt-4 text-sm leading-relaxed text-stone-600">
-              Brindamos asesoramiento y acompañamiento al desarrollador y al cliente desde la etapa de gestación del proyecto inmobiliario hasta la escrituración y el seguimiento posterior.
-            </p>
-          </div>
-        </div>
-      </section>
+      <ContactSection
+        title="Contacta con nuestros asesores"
+        subtitle="Agenda una cita con uno de nuestros asesores y conoce cómo Luxent puede acompañarte en comercialización, posicionamiento y cierre."
+        formTitle="Solicita una asesoría"
+        formSubtitle="Cuéntanos tu necesidad y te contactaremos con el equipo adecuado."
+        defaultType="general"
+        image={profileImage}
+        imageAlt="Luxent"
+      />
     </div>
   );
 }

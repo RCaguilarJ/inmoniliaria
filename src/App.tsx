@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -26,7 +26,7 @@ export default function App() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#FAF8F4] text-stone-900 selection:bg-[#1F8B74] selection:text-white">
+    <div className="flex min-h-screen flex-col bg-[#F3F7FA] text-stone-900 selection:bg-[#6F899D] selection:text-white">
       {/* GLOBAL HEADER BAR */}
       <Header activeTab={activeTab} setActiveTab={setActiveTab} />
 
