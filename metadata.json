@@ -1,0 +1,6 @@
+{
+  "name": "Grupo VEQ",
+  "description": "Demo interactiva del sitio web de Grupo VEQ con diseño premium, portafolio de desarrollos inmobiliarios, iniciativas sociales, bolsa de trabajo y blog.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

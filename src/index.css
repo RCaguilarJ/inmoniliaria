@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-heading: "Playfair Display", serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Corporate luxury color palette matches the logo identity:
+     - Deep jungle green: #005A44
+     - Medium teal/forest green: #1F8B74
+     - Light mint/aqua-teal: #8CC5C3
+  */
+  --color-veq-dark: #FAF8F4; /* Warm Natural Sand, soft and elegant */
+  --color-veq-darker: #F3ECE2; /* Deeper warm linen beige */
+  --color-veq-card: #FFFFFF; /* Pure White for contrast cards */
+  --color-veq-card-light: #EFE8DE; /* Soft warm hover */
+  
+  --color-veq-gold: #1F8B74; /* Medium teal/forest green from logo */
+  --color-veq-gold-dark: #005A44; /* Deep jungle green from logo */
+  --color-veq-gold-light: #8CC5C3; /* Light mint/aqua-teal from logo */
+  --color-veq-gold-pale: #F0F7F6; /* Extremely pale clean aqua-warm background */
+
+  --color-veq-gray-light: #FCFAF7;
+  --color-veq-gray-border: #E8E2D6;
+  --color-veq-gray-text: #415A52; /* Forest grey/charcoal for premium legibility */
+}
+
+@layer utilities {
+  /* Repeating texture background similar to the images provided by the client */
+  .bg-veq-pattern {
+    background-color: #FAF8F4;
+    background-image: radial-gradient(#1f8b74 0.4px, transparent 0.4px), radial-gradient(#1f8b74 0.4px, #FAF8F4 0.4px);
+    background-size: 16px 16px;
+    background-position: 0 0, 8px 8px;
+    background-opacity: 0.05;
+  }
+  
+  .bg-veq-light-pattern {
+    background-color: #FCFAF7;
+    background-image: radial-gradient(#1f8b74 0.3px, transparent 0.3px);
+    background-size: 20px 20px;
+    background-opacity: 0.06;
+  }
+
+  .text-shadow-gold {
+    text-shadow: 0 2px 10px rgba(31, 139, 116, 0.25);
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF8F4;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f8b74;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8cc5c3;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-veq-dark);
+  color: #122822; /* High-contrast elegant brand forestry deep text */
+  overflow-x: hidden;
+}
+
+/* 
+ * =========================================================================
+ * PRISTINE LIGHT WARM THEME DESIGN UTILITIES
+ * =========================================================================
+ */
+
+/* Elegant accent text colors matching the logo */
+.text-brand-darkgreen {
+  color: #005A44;
+}
+.text-brand-teal {
+  color: #1F8B74;
+}
+.text-brand-mint {
+  color: #8CC5C3;
+}
+
+/* Premium smooth transitions and hover actions */
+.hover-gold-glow:hover {
+  box-shadow: 0 4px 20px rgba(31, 139, 116, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Base custom interactive states */
+svg text {
+  fill: #005A44;
+}
+svg path {
+  stroke: rgba(0, 90, 68, 0.15);
+}
+
+/* Active navigation item under-bars */
+.active-nav-indicator {
+  background-color: #1F8B74;
+}
+
+/* Make inputs look modern, elegant, clean and highly readable */
+input, select, textarea {
+  color: #122822 !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #E8E2D6 !important;
+}
+input::placeholder {
+  color: #63766f !important;
+}
