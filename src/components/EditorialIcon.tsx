@@ -45,8 +45,8 @@ const ICONS = {
 
 export default function EditorialIcon({
   name,
-  className = 'text-[#CCD5DD]',
-  size = 22,
+  className = 'text-[#C9A96E]',
+  size = 24,
 }: EditorialIconProps) {
   const Icon = ICONS[name];
 
