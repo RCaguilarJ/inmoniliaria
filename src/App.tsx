@@ -12,7 +12,6 @@ import NosotrosView from './components/NosotrosView';
 import DevelopmentsView from './components/DevelopmentsView';
 import AlianzasView from './components/AlianzasView';
 import BlogView from './components/BlogView';
-import BolsaTrabajoView from './components/BolsaTrabajoView';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('inicio');
@@ -56,7 +55,6 @@ export default function App() {
             )}
             {activeTab === 'alianzas' && <AlianzasView />}
             {activeTab === 'blog' && <BlogView />}
-            {activeTab === 'bolsa' && <BolsaTrabajoView />}
           </motion.div>
         </AnimatePresence>
       </main>

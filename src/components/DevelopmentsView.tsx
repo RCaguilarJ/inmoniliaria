@@ -41,6 +41,43 @@ interface WorkProgressMilestone {
   date: string;
 }
 
+interface ProjectSheetFlags {
+  immediateDelivery?: boolean;
+  brochure?: boolean;
+  website?: boolean;
+  progress?: boolean;
+  availability?: boolean;
+  showUnit?: boolean;
+  note?: string;
+}
+
+const PROJECT_SHEET_FLAGS: Record<string, ProjectSheetFlags> = {
+  'veq-opera': {
+    immediateDelivery: true,
+    website: true,
+    availability: true,
+    note: 'Av. Juan Palomar y Arias aparece referenciada directamente en el PDF de proyectos.'
+  },
+  'veq-torredelprado': {
+    immediateDelivery: true,
+    website: true,
+    progress: true,
+    showUnit: true
+  },
+  'veq-travessera': {
+    immediateDelivery: true,
+    website: true,
+    progress: true,
+    availability: true
+  },
+  'veq-paseodegracia': {
+    brochure: true,
+    progress: true,
+    availability: true,
+    note: 'Identificado en el PDF como condominio horizontal sobre Av. Paseo de Gracia.'
+  }
+};
+
 const CUSTOM_PROJECT_BENEFITS: Record<string, { benefits: WhyBenefit[]; progress: number; milestones: WorkProgressMilestone[]; units: UnitInventory[] }> = {
   'veq-opera': {
     benefits: [
@@ -247,6 +284,8 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
     }
   };
 
+  const getProjectSheetFlags = (id: string): ProjectSheetFlags => PROJECT_SHEET_FLAGS[id] || {};
+
   return (
     <div className="relative w-full">
       {/* HEADER HERO */}
@@ -351,7 +390,10 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
             </div>
           ) : (
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {filteredDevelopments.map((dev) => (
+              {filteredDevelopments.map((dev) => {
+                const flags = getProjectSheetFlags(dev.id);
+
+                return (
                 <div
                   key={dev.id}
                   onClick={() => setSelectedDevelopment(dev)}
@@ -367,7 +409,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                     />
                     
                     {/* Status badge representation */}
-                    <div className="absolute left-4 top-4 flex gap-2">
+                    <div className="absolute left-4 top-4 flex flex-wrap gap-2">
                       <span className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider ${
                         dev.status === 'Concluido' 
                           ? 'bg-[#1F8B74] text-white shadow-sm' 
@@ -377,6 +419,11 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                       }`}>
                         {dev.status}
                       </span>
+                      {flags.immediateDelivery && (
+                        <span className="rounded-full border border-stone-100 bg-white/95 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#005A44] shadow-sm">
+                          Entrega inmediata
+                        </span>
+                      )}
                     </div>
 
                     <div className="absolute right-4 top-4 rounded-full bg-white/95 px-3 py-1 text-[10px] font-bold text-[#005A44] uppercase tracking-widest shadow-sm border border-stone-100">
@@ -410,6 +457,16 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                       {dev.description}
                     </p>
 
+                    {(flags.website || flags.brochure || flags.progress || flags.availability || flags.showUnit) && (
+                      <div className="flex flex-wrap gap-2">
+                        {flags.website && <span className="rounded-full bg-[#1F8B74]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#1F8B74]">Sitio web</span>}
+                        {flags.brochure && <span className="rounded-full bg-[#005A44]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#005A44]">Brochure</span>}
+                        {flags.progress && <span className="rounded-full bg-stone-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-stone-700">Avance de obra</span>}
+                        {flags.availability && <span className="rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-700">Disponibilidad</span>}
+                        {flags.showUnit && <span className="rounded-full bg-amber-500/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-700">Departamento muestra</span>}
+                      </div>
+                    )}
+
                     <div className="flex items-center justify-between border-t border-stone-100 pt-4">
                       <div className="flex gap-4 text-xs font-mono text-stone-500">
                         {dev.units && (
@@ -433,7 +490,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                     </div>
                   </div>
                 </div>
-              ))}
+              )})}
             </div>
           )}
         </div>
@@ -540,6 +597,25 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                           <MapPin className="h-3.5 w-3.5 text-[#1F8B74]" />
                           {selectedDevelopment.address}
                         </p>
+                        {(getProjectSheetFlags(selectedDevelopment.id).website ||
+                          getProjectSheetFlags(selectedDevelopment.id).brochure ||
+                          getProjectSheetFlags(selectedDevelopment.id).progress ||
+                          getProjectSheetFlags(selectedDevelopment.id).availability ||
+                          getProjectSheetFlags(selectedDevelopment.id).showUnit) && (
+                          <div className="flex flex-wrap gap-2 pt-1">
+                            {getProjectSheetFlags(selectedDevelopment.id).website && <span className="rounded-full bg-[#1F8B74]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#1F8B74]">Sitio web</span>}
+                            {getProjectSheetFlags(selectedDevelopment.id).brochure && <span className="rounded-full bg-[#005A44]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#005A44]">Brochure</span>}
+                            {getProjectSheetFlags(selectedDevelopment.id).progress && <span className="rounded-full bg-stone-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-stone-700">Avance de obra</span>}
+                            {getProjectSheetFlags(selectedDevelopment.id).availability && <span className="rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-700">Disponibilidad</span>}
+                            {getProjectSheetFlags(selectedDevelopment.id).showUnit && <span className="rounded-full bg-amber-500/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-700">Departamento muestra</span>}
+                            {getProjectSheetFlags(selectedDevelopment.id).immediateDelivery && <span className="rounded-full bg-white px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#005A44] border border-stone-200">Entrega inmediata</span>}
+                          </div>
+                        )}
+                        {getProjectSheetFlags(selectedDevelopment.id).note && (
+                          <p className="text-[11px] leading-relaxed text-stone-500">
+                            {getProjectSheetFlags(selectedDevelopment.id).note}
+                          </p>
+                        )}
                       </div>
 
                       {selectedDevelopment.id === 'veq-countryclub' && (
@@ -671,7 +747,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                                   <span className="absolute inset-0 flex items-center justify-center text-[10px] font-bold font-mono text-white">4K</span>
                                 </div>
                                 <div className="space-y-1">
-                                  <p className="text-xs font-semibold text-stone-200">Transmitiendo avances de "Condominios Country Club" registrados...</p>
+                                  <p className="text-xs font-semibold text-stone-200">Transmitiendo avances de la propiedad registrada en comercialización...</p>
                                   <p className="text-[10px] text-stone-500 font-mono">Dron automático barriendo estructura superior y acabados húmedos</p>
                                 </div>
                               </div>
@@ -691,7 +767,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                                 >
                                   {isPlayingVideo ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
                                 </button>
-                                <span className="font-mono text-[9px] text-stone-500">CANAL VEQ_drone_country.mov</span>
+                                <span className="font-mono text-[9px] text-stone-500">CANAL LUXENT_property_feed.mov</span>
                               </div>
                               <div className="flex items-center gap-3">
                                 <div className="flex items-center gap-1.5 text-[9px] font-mono text-[#1F8B74] uppercase">
@@ -879,7 +955,7 @@ export default function DevelopmentsView({ initialCityFilter, onClearInitialCity
                     customMessage={customMessage || undefined}
                   />
                   <div className="mt-6 text-center text-xs text-stone-600">
-                    Al enviar apruebas fiducias y regulaciones de Grupo VEQ.
+                    Al enviar aceptas el seguimiento comercial y la política de contacto de Luxent.
                   </div>
                 </div>
 

@@ -4,6 +4,12 @@
  */
 
 import { Development, Initiative, BlogArticle, JobVacancy, Alliance } from './types';
+import veqOperaImage from './assets/images/veq_opera_1781741132258.jpg';
+import veqTorreDelPradoImage from './assets/images/veq_torredelprado_1781741156146.jpg';
+import veqCountryClubImage from './assets/images/veq_countryclub_1781741180731.jpg';
+import veqTravesseraImage from './assets/images/veq_travessera_1781741204206.jpg';
+import veqPaseoDeGraciaImage from './assets/images/veq_paseodegracia_1781741234147.jpg';
+import veqDevelopmentThumbImage from './assets/images/veq_development_thumb_1781739550936.jpg';
 
 // Let's use the actual generated thumbnail for key properties and elegant mock URLs for others
 export const DEVELOPMENTS_DATA: Development[] = [
@@ -14,7 +20,7 @@ export const DEVELOPMENTS_DATA: Development[] = [
     status: 'Concluido',
     description: 'Un ícono de majestuosidad vertical en el horizonte de Guadalajara. Ópera fusiona la elegancia clásica con el diseño sustentable del futuro, ofreciendo residencias elevadas con vistas de 360 grados de la ciudad y amenidades de categoría mundial.',
     address: 'Av. Juan Palomar y Arias, Guadalajara, Jal.',
-    image: '/src/assets/images/veq_opera_1781741132258.jpg',
+    image: veqOperaImage,
     units: 110,
     areaSqM: 18400,
     amenities: ['Lobby triple altura', 'Infinity Pool', 'Club privado', 'Wellness Centre', 'Seguridad 24/7', 'Área de co-working premium'],
@@ -27,7 +33,7 @@ export const DEVELOPMENTS_DATA: Development[] = [
     status: 'Concluido',
     description: 'La armonía perfecta entre el dinamismo metropolitano y la serenidad natural. Torre del Prado cuenta con departamentos de diseño abierto, balcones panorámicos de cristal templado y excepcionales jardines privados en Providencia.',
     address: 'Av. Pablo Neruda, Providencia, Guadalajara, Jal.',
-    image: '/src/assets/images/veq_torredelprado_1781741156146.jpg',
+    image: veqTorreDelPradoImage,
     units: 82,
     areaSqM: 12500,
     amenities: ['Parque central privado', 'Sky bar', 'Gimnasio climatizado', 'Área infantil', 'Control de acceso biométrico'],
@@ -40,7 +46,7 @@ export const DEVELOPMENTS_DATA: Development[] = [
     status: 'En Desarrollo',
     description: 'Nuestra gema residencial vertical frente al legendario campo de golf Country Club. Vive rodeado de majestuosos árboles maduros, aire fresco y acabados artesanales del más alto lujo en una ubicación financiera inmejorable.',
     address: 'Vía Providencia / Country Club, Guadalajara, Jal.',
-    image: '/src/assets/images/veq_countryclub_1781741180731.jpg',
+    image: veqCountryClubImage,
     units: 145,
     areaSqM: 26500,
     amenities: ['Panoramic Golf View', 'Alberca templada', 'Simulador de golf virtual', 'Sauna & Vapor', 'Cigar Room', 'Conserjería 24/7'],
@@ -53,7 +59,7 @@ export const DEVELOPMENTS_DATA: Development[] = [
     status: 'Concluido',
     description: 'Arquitectura boutique pensada en la optimización del espacio, el confort y la privacidad. Travessera ofrece una distribución inteligente con ventilación natural óptima en el corazón de una zona residencial privilegiada.',
     address: 'Zona Providencia, Guadalajara, Jal.',
-    image: '/src/assets/images/veq_travessera_1781741204206.jpg',
+    image: veqTravesseraImage,
     units: 45,
     areaSqM: 6800,
     amenities: ['Roof garden con fogateros', 'Asadores empotrados', 'Gimnasio de pesas', 'Bicicleteros', 'Circuito cerrado TV'],
@@ -66,7 +72,7 @@ export const DEVELOPMENTS_DATA: Development[] = [
     status: 'En Desarrollo',
     description: 'El proyecto de condominio horizontal más exclusivo. Lotes residenciales premium organizados a través de una avenida de curvas orgánicas, parques integrados y servicios subterráneos con seguridad perimetral de grado militar.',
     address: 'Av. Paseo de Gracia, Guadalajara, Jal.',
-    image: '/src/assets/images/veq_paseodegracia_1781741234147.jpg',
+    image: veqPaseoDeGraciaImage,
     units: 34,
     areaSqM: 15800,
     amenities: ['Doble filtro de seguridad', 'Casa Club de lujo', 'Cancha de Pádel profesional', 'Sendero arbolado', 'Juegos infantiles y Pet standard'],
@@ -79,7 +85,7 @@ export const DEVELOPMENTS_DATA: Development[] = [
     status: 'En Desarrollo',
     description: 'Espacios que vibran en sintonía con tu estilo de vida. Un desarrollo residencial de arquitectura contemporánea en una de las zonas con mayor plusvalía de Guadalajara.',
     address: 'Av. Circunvalación Agustín Yáñez, Guadalajara, Jal.',
-    image: '/src/assets/images/veq_development_thumb_1781739550936.jpg', // Using generated thumb
+    image: veqDevelopmentThumbImage,
     units: 140,
     areaSqM: 14500,
     amenities: ['Alberca climatizada', 'Gimnasio equipado', 'Sky bar', 'Área de co-working', 'Seguridad 24/7'],
@@ -226,7 +232,7 @@ export const DEVELOPMENTS_DATA: Development[] = [
   },
   {
     id: 'veq-asuncion',
-    name: 'VEQ Asunción',
+    name: 'Asunción Collection',
     city: 'Guadalajara',
     status: 'Concluido',
     description: 'Elegancia clásica combinada con facilidades modernas en una de las colonias residenciales tradicionales más cotizadas y arboladas.',
@@ -238,7 +244,7 @@ export const DEVELOPMENTS_DATA: Development[] = [
   },
   {
     id: 'veq-brasilia',
-    name: 'VEQ Brasilia',
+    name: 'Brasilia Collection',
     city: 'Guadalajara',
     status: 'Concluido',
     description: 'Espacios habitables fluidos con balcones corridos y diseño sostenible que recolecta aguas de lluvia e incorpora energía solar comunitaria.',
@@ -250,7 +256,7 @@ export const DEVELOPMENTS_DATA: Development[] = [
   },
   {
     id: 'veq-martinica',
-    name: 'VEQ Martinica',
+    name: 'Martinica Collection',
     city: 'León',
     status: 'En Desarrollo',
     description: 'Ubicación clave cerca de universidades y distritos de negocios del Bajío, ideal para arrendamiento corporativo y estudiantes con alto perfil.',
@@ -262,7 +268,7 @@ export const DEVELOPMENTS_DATA: Development[] = [
   },
   {
     id: 'veq-severodiaz',
-    name: 'VEQ Severo Díaz',
+    name: 'Severo Díaz Collection',
     city: 'Guadalajara',
     status: 'Concluido',
     description: 'Estilo boutique de tan solo 45 departamentos selectos con acceso controlado en una ubicación de máxima tranquilidad a cuadras del Centro Histórico.',
@@ -274,7 +280,7 @@ export const DEVELOPMENTS_DATA: Development[] = [
   },
   {
     id: 'veq-villamorelos',
-    name: 'VEQ Villa Morelos',
+    name: 'Villa Morelos Collection',
     city: 'Guadalajara',
     status: 'En Desarrollo',
     description: 'Conecta con tu nuevo estilo de vida urbano. Ofrece unidades habitacionales funcionales con acceso inmediato a ciclovías y transporte sustentable.',
@@ -309,7 +315,7 @@ export const INITIATIVES_DATA: Initiative[] = [
   {
     id: 'aulas',
     title: 'Aulas Educativas en Obra',
-    description: 'En Grupo VEQ, estamos comprometidos con el desarrollo integral. Nos enorgullece presentar nuestro programa de alfabetización y educación primaria y secundaria para albañiles y ayudantes oficiales, en alianza directa con la fundación Construyendo y Creciendo.',
+    description: 'Creemos en el valor de acompañar a las personas con procesos claros, atención cercana y herramientas que hagan más humana la experiencia inmobiliaria.',
     impact: '64 alumnos activos cursando certificados académicos oficiales SEP en 3 aulas interactivas instaladas en las obras.',
     image: 'https://picsum.photos/seed/aulas/800/600'
   },
@@ -324,58 +330,58 @@ export const INITIATIVES_DATA: Initiative[] = [
 
 export const BLOG_DATA: BlogArticle[] = [
   {
-    id: 'roi-calculator-en',
-    title: 'How to Calculate the ROI of a Property Before Buying (Easy Formula)',
-    date: 'Junio 17, 2026',
-    category: 'Inversión Inmobiliaria',
-    excerpt: 'Thinking about purchasing real estate for rental income? Learn how to calculate cap rate and ROI with this simple, step-by-step formula designed for sound returns.',
-    content: 'En esta entrada desglosamos las fórmulas financieras esenciales para calcular el Retorno de Inversión (ROI) y la Tasa de Capitalización (Cap Rate). Suma todos los ingresos anuales esperados del arrendamiento, resta los costos de mantenimiento preventivo, impuestos prediales, seguros e imprevistos, e introduce el valor total de adquisición comercial para determinar la tasa exacta y el tiempo estimado de recuperación.',
-    image: 'https://picsum.photos/seed/roi_blog_en/800/500'
+    id: 'segmento-premium',
+    title: 'Por qué el segmento premium exige una estrategia comercial distinta',
+    date: 'Junio 2025',
+    category: 'Tendencias',
+    excerpt: 'Luxent opera dentro del segmento premium con un enfoque centrado en atención personalizada, posicionamiento selectivo y experiencia de marca.',
+    content: 'La comercialización de propiedades premium requiere precisión en el mensaje, curaduría del inventario y un entendimiento profundo del perfil del cliente. Luxent estructura la comunicación y la experiencia comercial para responder a ese nivel de exigencia.',
+    image: veqCountryClubImage
   },
   {
-    id: 'roi-calculator-es',
-    title: 'Cómo calcular el ROI de un inmueble antes de comprarlo (fórmula fácil)',
-    date: 'Junio 16, 2026',
-    category: 'Inversión Inmobiliaria',
-    excerpt: '¿Pensando en invertir en bienes raíces para rentar? Te enseñamos cómo proyectar tus ganancias mensuales, calcular gastos operativos y obtener la rentabilidad neta anual.',
-    content: 'La inversión inteligente no es de corazonadas, sino de números fríos. Utiliza la fórmula clásica de Flujo de Efectivo Neto dividido entre Monto Total Invertido para conocer el porcentaje real del retorno que te brindará un departamento. Con las unidades de Grupo VEQ, puedes proyectar un ROI promedio anual del 8% al 12% sustentado en plusvalía histórica de zonas clave.',
-    image: 'https://picsum.photos/seed/roi_blog_es/800/500'
+    id: 'experiencia-digital',
+    title: 'Experiencia digital en real estate: del brochure a la disponibilidad en tiempo real',
+    date: 'Junio 2025',
+    category: 'Consejos',
+    excerpt: 'La experiencia digital ya no es un extra. Es parte central del proceso comercial para proyectos y propiedades de alto valor.',
+    content: 'Cotizadores, brochures digitales, mapas 3D y disponibilidad en tiempo real permiten acelerar decisiones y dar claridad al cliente. En Luxent estas herramientas forman parte del proceso comercial cotidiano.',
+    image: veqOperaImage
   },
   {
-    id: 'usos-mixtos-zapopan',
-    title: 'Vivir cerca de todo: por qué los desarrollos de usos mixtos están cambiando la forma de invertir y vivir en Zapopan',
-    date: 'Junio 16, 2026',
-    category: 'Inversión Inmobiliaria',
-    excerpt: 'La comodidad del "desarrollo vertical de 15 minutos". Descubre la demanda creciente de los complejos habitacionales con locales comerciales, corporativos y áreas verdes integrados.',
-    content: 'La vida moderna valora el recurso más escaso: el tiempo. Evitar atascos de tráfico y tener un Starbucks, gimnasio premium, áreas de coworking y supermercados en la planta baja de tu edificio es hoy el factor de decisión número uno para los millennials y profesionales calificados en Zapopan.',
-    image: 'https://picsum.photos/seed/usos_mixtos/800/500'
+    id: 'marketing-especializado',
+    title: 'Marketing especializado para propiedades exclusivas',
+    date: 'Junio 2025',
+    category: 'Consejos',
+    excerpt: 'Cada propiedad necesita una estrategia distinta de posicionamiento, pauta, contenido visual y narrativa comercial.',
+    content: 'Luxent diseña campañas adaptadas a cada propiedad con SEO/SEM, publicidad digital dirigida, redes sociales y piezas visuales capaces de comunicar valor, ubicación y estilo de vida con mayor precisión.',
+    image: veqTravesseraImage
   },
   {
-    id: 'plusvalia-tijuana-en',
-    title: 'The 5 Best Areas for Property Appreciation in Tijuana to Invest in 2026',
-    date: 'Junio 15, 2026',
-    category: 'Inversión Inmobiliaria',
-    excerpt: 'Tijuana is experiencing an unprecedented industrial and medical tourism boom. Check out the top districts offering unparalleled capital gains this season.',
-    content: 'From Zona Río to Cacho and Otay, we analyze the zoning, commercial expansions, and border transit logistics that are doubling real estate investments in Tijuana. Perfect for investors interested in short-term tourist lets or corporate leases.',
-    image: 'https://picsum.photos/seed/tijuana_blog_en/800/500'
+    id: 'diseno-vanguardia',
+    title: 'Diseño visual de vanguardia: cómo vender mejor una propiedad',
+    date: 'Junio 2025',
+    category: 'Tendencias',
+    excerpt: 'Renders, recorridos virtuales y fotografía de calidad elevan la percepción de valor y mejoran la conversación comercial.',
+    content: 'Una presentación visual sofisticada permite capturar la esencia de cada propiedad y resaltar sus atributos diferenciales. Esa capa visual es clave para un segmento donde la percepción de detalle importa desde el primer contacto.',
+    image: veqPaseoDeGraciaImage
   },
   {
-    id: 'plusvalia-tijuana-es',
-    title: 'Las 5 zonas con mayor plusvalía en Tijuana para invertir en 2026',
-    date: 'Junio 11, 2026',
-    category: 'Inversión Inmobiliaria',
-    excerpt: 'La frontera más visitada del mundo vive un auge sin precedentes. Te presentamos el análisis detallado de suelo y rentas que coloca a la Zona Río en el primer lugar de atractivos.',
-    content: 'Tijuana se ha convertido en un centro urbano clave para corporativos de tecnología, turismo médico y manufactura avanzada de alta precisión. Invertir en proyectos como Black Eleven te sitúa en la centralidad idónea para rentar en dólares con excelentes tasas de ocupación anualizada.',
-    image: 'https://picsum.photos/seed/tijuana_blog_es/800/500'
+    id: 'benchmarking-mercado',
+    title: 'Benchmarking inmobiliario: la base para definir producto, precio y formas de pago',
+    date: 'Junio 2025',
+    category: 'Notas de Prensa',
+    excerpt: 'El análisis de mercado permite diseñar mejor el producto y orientar la comercialización hacia el cliente correcto.',
+    content: 'Los estudios de mercado y benchmarking en zonas como Country y Las Lomas ayudan a definir producto inmobiliario, precios, narrativa y esquemas de pago con una base comercial más sólida.',
+    image: veqTorreDelPradoImage
   },
   {
-    id: 'casa-vs-departamento',
-    title: 'House vs. Apartment: Which is the Better Choice for Your Lifestyle?',
-    date: 'Junio 10, 2026',
-    category: 'Inversión Inmobiliaria',
-    excerpt: 'Analysis of security fees, maintenance workload, convenience of central locations, and premium building amenities versus traditional suburbs.',
-    content: 'Un recuento honesto de por qué las nuevas generaciones prefieren departamentos verticales céntricos con spa, piscina y vigilancia armada frente a casas grandes incomunicadas en las afueras con pesadas labores de jardín y altos gastos de climatización individual.',
-    image: 'https://picsum.photos/seed/house_vs_apt/800/500'
+    id: 'acompanamiento-legal',
+    title: 'Acompañamiento legal desde la gestación hasta la postventa',
+    date: 'Junio 2025',
+    category: 'Notas de Prensa',
+    excerpt: 'La confianza en un proyecto inmobiliario se construye también con acompañamiento jurídico claro y continuo.',
+    content: 'Luxent acompaña a desarrolladores y clientes desde la etapa de gestación del proyecto hasta la escrituración y la postventa, integrando claridad operativa y soporte comercial a lo largo del proceso.',
+    image: veqDevelopmentThumbImage
   }
 ];
 

@@ -3,104 +3,100 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
-import { Target, Heart, Eye, Award, Quote, Sprout, HeartHandshake } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import { INITIATIVES_DATA } from '../data';
+import React from 'react';
+import { Compass, Eye, FileText, Globe, Layers, Scale, ShieldCheck, Sparkles, Users } from 'lucide-react';
+
+const differentiators = [
+  {
+    title: 'Segmento premium',
+    description: 'Enfocados en la comercialización de propiedades de lujo residenciales, comerciales y exclusivas.',
+    icon: Eye,
+  },
+  {
+    title: 'Experiencia digital',
+    description: 'Soluciones tecnológicas de vanguardia para ofrecer una experiencia fluida de búsqueda, análisis y cierre.',
+    icon: Globe,
+  },
+  {
+    title: 'Marketing especializado',
+    description: 'Campañas personalizadas, posicionamiento SEO/SEM, redes sociales y contenidos visuales para cada propiedad.',
+    icon: Sparkles,
+  },
+  {
+    title: 'Diseño de vanguardia',
+    description: 'Presentaciones visuales sofisticadas que capturan la esencia de cada desarrollo y realzan sus mejores atributos.',
+    icon: Layers,
+  },
+  {
+    title: 'Community management',
+    description: 'Gestión de comunidades y presencia online para sostener relaciones de confianza y valor continuo.',
+    icon: Users,
+  },
+  {
+    title: 'Equipo multidisciplinario',
+    description: 'Nuestra clave está en un equipo comprometido con la excelencia comercial, operativa y digital.',
+    icon: ShieldCheck,
+  },
+];
 
 export default function NosotrosView() {
-  const [selectedInitiative, setSelectedInitiative] = useState<string | null>(null);
-
-  const values = [
-    { title: "Empatía Humana", desc: "Priorizamos el trato justo y el crecimiento de cada miembro de nuestra cadena de valor, desde los constructores hasta los compradores.", icon: Heart },
-    { title: "Visión Sólida", desc: "Planes maestros pensados en trascender, combinando la viabilidad comercial con la plusvalía de largo plazo.", icon: Eye },
-    { title: "Entrega Impecable", desc: "Supervisión obsesiva del detalle de acabados y fiducias transparentes garantizan certeza patrimonial permanente.", icon: Award }
-  ];
-
-  const currentInitiative = INITIATIVES_DATA.find(init => init.id === selectedInitiative);
-
   return (
     <div className="relative w-full">
-      {/* HEADER SECTION */}
-      <section className="bg-[#F3ECE2] border-b border-[#005A44]/15 px-6 py-20">
-        <div className="mx-auto max-w-7xl text-center space-y-3">
-          <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#1F8B74]">¿Quiénes Somos?</span>
-          <h1 className="font-heading text-4xl font-bold text-[#005A44] sm:text-5xl">Nuestra Identidad y Filosofía</h1>
-          <p className="mx-auto max-w-2xl text-stone-600 text-sm">
-            Grupo VEQ es una de las fiduciarias constructoras e inmobiliarias de mayor crecimiento en el sector habitacional de México, enfocada en redefinir el concepto de comunidad integrada.
+      <section className="border-b border-[#005A44]/15 bg-[#F3ECE2] px-6 py-20">
+        <div className="mx-auto max-w-6xl text-center space-y-3">
+          <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#1F8B74]">Quiénes somos</span>
+          <h1 className="font-heading text-4xl font-bold text-[#005A44] sm:text-5xl">Luxent</h1>
+          <p className="mx-auto max-w-3xl text-sm leading-relaxed text-stone-600">
+            En Luxent nos especializamos en la comercialización de propiedades exclusivas dentro del segmento premium. Con un enfoque innovador y personalizado, ofrecemos experiencias únicas y soluciones inmobiliarias de alta gama para clientes exigentes.
           </p>
         </div>
       </section>
 
-      {/* PRESIDENCIA - LETTER FROM JACK LEVY */}
-      <section className="bg-gradient-to-br from-white to-[#FAF8F4] px-6 py-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            
-            {/* Left Letter Content */}
-            <div className="space-y-6 lg:col-span-7">
-              <div className="flex items-center gap-2">
-                <Quote className="h-8 w-8 text-[#1F8B74] opacity-50" />
-                <span className="font-mono text-xs font-bold text-[#1F8B74] uppercase tracking-widest">Carta de Nuestro Presidente</span>
+      <section className="bg-white px-6 py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-8 lg:grid-cols-2">
+            <div className="rounded-2xl border border-[#005A44]/12 bg-[#FAF8F4] p-8 shadow-sm">
+              <div className="flex items-center gap-3 text-[#1F8B74]">
+                <Compass className="h-5 w-5" />
+                <span className="font-mono text-xs font-bold uppercase tracking-widest">Objetivo</span>
               </div>
-              <h2 className="font-heading text-3xl font-bold text-[#005A44] sm:text-4xl">Soy Jack Levy</h2>
-              <div className="space-y-4 text-stone-700 text-sm leading-relaxed">
-                <p>
-                  "Cuando fundamos Grupo VEQ, lo hicimos con la convicción indestructible de que los desarrollos residenciales complejos no deben ser solo cúmulos de concreto apilados, sino verdaderas comunidades vivas donde las personas encuentren paz, seguridad y arraigo."
-                </p>
-                <p>
-                  "Durante estos años, hemos entregado con orgullo más de 2,000 llaves residenciales a familias e inversionistas que confiaron su capital en nuestras fiducias bancarias. Nuestra misión no concluye en la entrega de la llave; comienza ahí, donde cada desarrollo dinamiza la plusvalía del territorio de nuestros socios, brindando tranquilidad jurídica absoluta."
-                </p>
-                <p>
-                  "A su vez, comprendemos que el verdadero progreso es el que asume responsabilidad social. A través de fiducias comunitarias, dignificamos el quehacer diario de nuestros trabajadores de construcción e impulsamos la nutrición infantil. Estamos construyendo el México del mañana con el corazón puesto en la empatía humana."
-                </p>
-              </div>
-              <div className="pt-4 border-t border-[#005A44]/15">
-                <p className="font-heading text-lg font-bold text-[#005A44]">Jack Levy</p>
-                <p className="font-mono text-xs text-[#1F8B74] uppercase tracking-wider mt-0.5">Fundador y Presidente de Grupo VEQ</p>
-              </div>
+              <h2 className="mt-4 font-heading text-3xl font-bold text-[#005A44]">Asesoría integral con base comercial y digital</h2>
+              <p className="mt-4 text-sm leading-relaxed text-stone-600">
+                Nuestro objetivo es combinar conocimiento profundo del mercado inmobiliario con las últimas tendencias tecnológicas y digitales. A través de atención al detalle, marketing, diseño y comunicación digital, facilitamos la compra, venta y alquiler de propiedades que redefinen el lujo.
+              </p>
             </div>
 
-            {/* Right Photo Frame */}
-            <div className="lg:col-span-5">
-              <div className="relative mx-auto max-w-sm rounded-2xl border border-[#1F8B74]/20 p-3 bg-white shadow-md">
-                <div className="aspect-square overflow-hidden rounded-xl border border-stone-200">
-                  <img
-                    src="/src/assets/images/veq_jack_levy_1781739538027.jpg"
-                    alt="Jack Levy Presidente"
-                    className="h-full w-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <div className="mt-4 text-center pb-2">
-                  <p className="font-mono text-[9px] text-stone-500 uppercase tracking-widest">Retrato Corporativo Oficial</p>
-                  <p className="text-sm font-semibold text-stone-700 mt-1">"Trascendencia a través de la empatía"</p>
-                </div>
+            <div className="rounded-2xl border border-[#005A44]/12 bg-[#00120e] p-8 shadow-sm">
+              <div className="flex items-center gap-3 text-[#8CC5C3]">
+                <FileText className="h-5 w-5" />
+                <span className="font-mono text-xs font-bold uppercase tracking-widest">Infraestructura</span>
               </div>
+              <h2 className="mt-4 font-heading text-3xl font-bold text-white">La carta de presentación de nuestros desarrollos</h2>
+              <p className="mt-4 text-sm leading-relaxed text-stone-300">
+                Luxent se ha convertido en un espacio donde los clientes se sienten en casa y encuentran la confianza necesaria para avanzar en la compra de proyectos inmobiliarios premium.
+              </p>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* CORE VALUES BENTO */}
-      <section className="bg-[#F3ECE2] border-y border-[#005A44]/15 px-6 py-20">
+      <section className="border-y border-[#005A44]/15 bg-[#F3ECE2] px-6 py-20">
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
-            <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#1F8B74]">Pilares Corporativos</span>
-            <h2 className="mt-2 font-heading text-3xl font-bold text-[#005A44]">Nuestros Valores Fundantes</h2>
+            <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#1F8B74]">Qué nos diferencia</span>
+            <h2 className="mt-2 font-heading text-3xl font-bold text-[#005A44]">Excelencia comercial, visual y operativa</h2>
           </div>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-3">
-            {values.map((v) => {
-              const Icon = v.icon;
+          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {differentiators.map((item) => {
+              const Icon = item.icon;
               return (
-                <div key={v.title} className="rounded-xl border border-stone-200 bg-white p-6 hover:border-[#1F8B74]/35 transition-all hover:shadow-md group">
-                  <div className="rounded-lg bg-[#1F8B74]/10 p-3 text-[#1F8B74] w-fit transition-transform group-hover:scale-105">
+                <div key={item.title} className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm">
+                  <div className="w-fit rounded-lg bg-[#1F8B74]/10 p-3 text-[#1F8B74]">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h4 className="mt-5 font-heading text-xl font-bold text-[#005A44] group-hover:text-[#1F8B74] transition-colors">{v.title}</h4>
-                  <p className="mt-2.5 text-stone-600 text-sm leading-relaxed">{v.desc}</p>
+                  <h3 className="mt-5 font-heading text-xl font-bold text-[#005A44]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-stone-600">{item.description}</p>
                 </div>
               );
             })}
@@ -108,94 +104,31 @@ export default function NosotrosView() {
         </div>
       </section>
 
-      {/* SOCIAL INITIATIVES */}
-      <section className="bg-[#FAF8F4] px-6 py-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center space-y-2">
-            <div className="flex items-center justify-center gap-1.5 text-[#1F8B74]">
-              <HeartHandshake className="h-5 w-5" />
-              <span className="font-mono text-xs font-bold uppercase tracking-widest">Nuestras Iniciativas Sociales</span>
+      <section className="bg-white px-6 py-24">
+        <div className="mx-auto max-w-7xl grid gap-8 lg:grid-cols-2">
+          <div className="rounded-2xl border border-[#005A44]/12 bg-[#FAF8F4] p-8 shadow-sm">
+            <div className="flex items-center gap-3 text-[#1F8B74]">
+              <Layers className="h-5 w-5" />
+              <span className="font-mono text-xs font-bold uppercase tracking-widest">Estudios y análisis de mercado</span>
             </div>
-            <h2 className="font-heading text-3xl font-bold text-[#005A44] sm:text-4xl">Fuerza comunitaria e impacto real</h2>
-            <p className="mx-auto max-w-xl text-stone-600 text-sm">
-              En Grupo VEQ creemos que edificar va más allá del ladrillo. Nos comprometemos activamente con el bienestar social de nuestros colaboradores y las infancias vulnerables.
+            <h3 className="mt-4 font-heading text-2xl font-bold text-[#005A44]">Benchmarking y definición de producto</h3>
+            <p className="mt-4 text-sm leading-relaxed text-stone-600">
+              Trabajamos con análisis enfocados en Zona Country, Las Lomas y perfil del cliente para ayudar a definir producto inmobiliario, precios y formas de pago con mayor precisión comercial.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-8 sm:grid-cols-3">
-            {INITIATIVES_DATA.map((init) => (
-              <div
-                key={init.id}
-                className="group flex flex-col justify-between overflow-hidden rounded-xl border border-[#005A44]/15 bg-white transition-all hover:-translate-y-0.5 hover:shadow-md hover:border-[#1F8B74]/35"
-              >
-                <div>
-                  <div className="relative aspect-video overflow-hidden">
-                    <img
-                      src={init.image}
-                      alt={init.title}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h4 className="font-heading text-xl font-bold text-[#005A44] group-hover:text-[#1F8B74] transition-colors">{init.title}</h4>
-                    <p className="mt-2.5 text-stone-700 text-sm leading-relaxed line-clamp-3 md:line-clamp-none">{init.description}</p>
-                  </div>
-                </div>
-                <div className="p-6 pt-0">
-                  <div className="mt-4 rounded-lg bg-[#1F8B74]/10 border border-[#1F8B74]/20 p-4">
-                    <p className="font-mono text-[9px] font-bold text-[#1F8B74] uppercase tracking-widest">Impacto Medible</p>
-                    <p className="mt-1 text-xs font-semibold text-stone-800">{init.impact}</p>
-                  </div>
-                  <button
-                    onClick={() => setSelectedInitiative(init.id)}
-                    id={`btn-init-details-${init.id}`}
-                    className="mt-4 w-full rounded-lg border border-stone-200 bg-stone-50 py-2.5 text-center text-xs font-semibold text-stone-700 hover:bg-[#1F8B74] hover:text-white hover:border-[#1F8B74] transition-all uppercase tracking-wider"
-                  >
-                    Saber más
-                  </button>
-                </div>
-              </div>
-            ))}
+          <div className="rounded-2xl border border-[#005A44]/12 bg-[#FAF8F4] p-8 shadow-sm">
+            <div className="flex items-center gap-3 text-[#1F8B74]">
+              <Scale className="h-5 w-5" />
+              <span className="font-mono text-xs font-bold uppercase tracking-widest">Asesoramiento jurídico</span>
+            </div>
+            <h3 className="mt-4 font-heading text-2xl font-bold text-[#005A44]">Acompañamiento desde la gestación hasta la postventa</h3>
+            <p className="mt-4 text-sm leading-relaxed text-stone-600">
+              Brindamos asesoramiento y acompañamiento al desarrollador y al cliente desde la etapa de gestación del proyecto inmobiliario hasta la escrituración y el seguimiento posterior.
+            </p>
           </div>
         </div>
       </section>
-
-      {/* INITIATIVE MODAL */}
-      <AnimatePresence>
-        {selectedInitiative && currentInitiative && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#00120e]/80 backdrop-blur-sm">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="relative max-w-xl w-full rounded-2xl bg-white border border-[#005A44]/15 p-6 shadow-2xl space-y-4"
-              id="initiative-modal-box"
-            >
-              <h3 className="font-heading text-2xl font-bold text-[#005A44]">{currentInitiative.title}</h3>
-              <div className="aspect-video overflow-hidden rounded-lg">
-                <img src={currentInitiative.image} alt={currentInitiative.title} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-              </div>
-              <p className="text-sm text-stone-750 leading-relaxed text-left">{currentInitiative.description}</p>
-              
-              <div className="rounded-xl bg-[#1F8B74]/10 border border-[#1F8B74]/20 p-4 text-left">
-                <span className="font-mono text-[9px] font-bold text-[#1F8B74] uppercase tracking-widest">Indicador del Programa</span>
-                <p className="mt-1 text-sm font-semibold text-[#005A44]">{currentInitiative.impact}</p>
-              </div>
-
-              <div className="pt-2 flex justify-end">
-                <button
-                  onClick={() => setSelectedInitiative(null)}
-                  className="rounded-full bg-[#1F8B74] px-6 py-2 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#005A44]"
-                  id="btn-close-init-modal"
-                >
-                  Entendido
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }

@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { Menu, X, Landmark, Globe, ArrowUpRight, Phone, MapPin } from 'lucide-react';
+import { Menu, X, Landmark, ArrowUpRight, Phone, MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import CountryClubLogo from './CountryClubLogo';
 
@@ -19,10 +19,9 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
   const navItems = [
     { id: 'inicio', label: 'Inicio' },
     { id: 'nosotros', label: 'Nosotros' },
-    { id: 'desarrollos', label: 'Desarrollos' },
-    { id: 'alianzas', label: 'Alianzas' },
-    { id: 'blog', label: 'Blog' },
-    { id: 'bolsa', label: 'Bolsa de Trabajo' }
+    { id: 'desarrollos', label: 'Propiedades' },
+    { id: 'alianzas', label: 'Servicios' },
+    { id: 'blog', label: 'Insights' }
   ];
 
   const handleNavClick = (tabId: string) => {
@@ -33,33 +32,31 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-veq-dark/90 backdrop-blur-md">
-      {/* Top micro-bar */}
       <div className="hidden border-b border-white/5 px-6 py-2 text-xs text-stone-400 md:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5 hover:text-veq-gold transition-colors">
+            <span className="flex items-center gap-1.5 transition-colors hover:text-veq-gold">
               <Phone className="h-3.5 w-3.5 text-veq-gold" />
-              +52 (33) 3640 4700
+              33 1142 9932
             </span>
-            <span className="flex items-center gap-1.5 hover:text-veq-gold transition-colors">
+            <span className="flex items-center gap-1.5 transition-colors hover:text-veq-gold">
               <MapPin className="h-3.5 w-3.5 text-veq-gold" />
-              Av. Pablo Neruda 3107, Col. Providencia, Guadalajara, Jal.
+              Av. Américas 1930-PB, Country Club, Guadalajara, Jal.
             </span>
           </div>
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1 text-veq-gold">
               <Landmark className="h-3.5 w-3.5" />
-              Credencial Fiduciaria Solida
+              Segmento Premium
             </span>
             <span>•</span>
-            <span>Español / EN</span>
+            <span>Comercialización Inmobiliaria</span>
           </div>
         </div>
       </div>
 
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-        {/* Brand Name & Country Club Emblem */}
-        <button 
+        <button
           onClick={() => handleNavClick('inicio')}
           className="group flex items-center gap-3 text-left focus:outline-none"
           id="btn-nav-logo"
@@ -68,16 +65,15 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
             <CountryClubLogo className="h-10 w-10" showText={false} />
           </div>
           <div className="flex flex-col">
-            <span className="font-heading text-lg font-black tracking-wider text-[#005A44] transition-all group-hover:text-[#1F8B74] leading-none">
-              COUNTRY CLUB
+            <span className="font-heading text-lg font-black leading-none tracking-wider text-[#005A44] transition-all group-hover:text-[#1F8B74]">
+              LUXENT
             </span>
-            <span className="font-mono text-[8px] tracking-widest text-stone-500 uppercase mt-0.5 leading-none">
-              CONDOMINIOS • GRUPO VEQ
+            <span className="mt-0.5 font-mono text-[8px] leading-none tracking-widest text-stone-500 uppercase">
+              PREMIUM PROPERTIES
             </span>
           </div>
         </button>
 
-        {/* Desktop Navigation */}
         <nav className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
@@ -103,19 +99,17 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
           })}
         </nav>
 
-        {/* Contact/Demo Call to Action */}
         <div className="hidden items-center md:flex">
           <button
             onClick={() => handleNavClick('desarrollos')}
             id="btn-nav-cta-header"
-            className="group flex items-center gap-2 rounded-full border border-[#1F8B74]/30 bg-[#1F8B74]/5 px-5 py-2.5 text-xs font-semibold tracking-wider text-[#1F8B74] transition-all duration-300 hover:border-[#1F8B74] hover:bg-[#1F8B74] hover:text-white uppercase"
+            className="group flex items-center gap-2 rounded-full border border-[#1F8B74]/30 bg-[#1F8B74]/5 px-5 py-2.5 text-xs font-semibold tracking-wider text-[#1F8B74] uppercase transition-all duration-300 hover:border-[#1F8B74] hover:bg-[#1F8B74] hover:text-white"
           >
-            Ver Desarrollos
+            Ver Propiedades
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>
         </div>
 
-        {/* Mobile menu button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           id="btn-hamburger"
@@ -126,7 +120,6 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
         </button>
       </div>
 
-      {/* Mobile Drawer */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -144,8 +137,8 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
                     id={`btn-nav-mobile-${item.id}`}
                     onClick={() => handleNavClick(item.id)}
                     className={`flex items-center justify-between rounded-md p-3 text-sm font-medium tracking-wide transition-all ${
-                      isActive 
-                        ? 'bg-[#1F8B74]/10 text-[#1F8B74] font-semibold border-l-4 border-[#1F8B74]' 
+                      isActive
+                        ? 'bg-[#1F8B74]/10 text-[#1F8B74] font-semibold border-l-4 border-[#1F8B74]'
                         : 'text-stone-600 hover:bg-stone-50 hover:text-stone-900'
                     }`}
                   >
@@ -158,9 +151,9 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
                 <button
                   onClick={() => handleNavClick('desarrollos')}
                   id="btn-nav-cta-header-mobile"
-                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#1F8B74] py-3 text-center text-xs font-semibold uppercase tracking-wider text-white transition-all duration-300 active:scale-95"
+                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#1F8B74] py-3 text-center text-xs font-semibold tracking-wider text-white uppercase transition-all duration-300 active:scale-95"
                 >
-                  Ver Desarrollos
+                  Ver Propiedades
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </button>
               </div>

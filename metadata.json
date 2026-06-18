@@ -1,6 +1,6 @@
 {
-  "name": "Grupo VEQ",
-  "description": "Demo interactiva del sitio web de Grupo VEQ con diseño premium, portafolio de desarrollos inmobiliarios, iniciativas sociales, bolsa de trabajo y blog.",
+  "name": "Luxent",
+  "description": "Sitio de Luxent con enfoque en comercialización de propiedades premium, asesoría inmobiliaria, marketing especializado y herramientas digitales para ventas y postventa.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
