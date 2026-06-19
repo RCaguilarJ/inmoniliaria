@@ -7,7 +7,7 @@ import { Development, Initiative, BlogArticle, JobVacancy, Alliance } from './ty
 import veqOperaImage from './assets/images/veq_opera_1781741132258.jpg';
 import veqTorreDelPradoImage from './assets/images/veq_torredelprado_1781741156146.jpg';
 import veqCountryClubImage from './assets/images/veq_countryclub_1781741180731.jpg';
-import veqTravesseraImage from './assets/images/veq_travessera_1781741204206.jpg';
+import veqTravesseraImage from './assets/images/DJI_20250812195148_0006_D_Editada.png';
 import veqPaseoDeGraciaImage from './assets/images/veq_paseodegracia_1781741234147.jpg';
 import veqDevelopmentThumbImage from './assets/images/veq_development_thumb_1781739550936.jpg';
 import countryClubLobbyChandelierWide from './assets/images/countryclub-real/lobby-chandelier-wide.jpg';

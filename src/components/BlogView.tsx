@@ -11,7 +11,7 @@ import { BlogArticle } from '../types';
 import ContactSection from './ContactSection';
 import PageHero from './PageHero';
 import SectionDivider from './SectionDivider';
-import heroImage from '../assets/images/veq_travessera_1781741204206.jpg';
+import heroImage from '../assets/images/FOTOS FACHADAS TDP SUR.png';
 import contactImage from '../assets/images/veq_jack_levy_1781739538027.jpg';
 
 export default function BlogView() {
