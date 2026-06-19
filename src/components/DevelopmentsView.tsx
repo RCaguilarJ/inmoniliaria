@@ -17,8 +17,8 @@ import ContactSection from './ContactSection';
 import CountryClubLogo from './CountryClubLogo';
 import PageHero from './PageHero';
 import SectionDivider from './SectionDivider';
-import heroImage from '../assets/images/veq_countryclub_1781741180731.jpg';
-import contactImage from '../assets/images/veq_jack_levy_1781739538027.jpg';
+import heroImage from '../assets/images/real-selected/tdp-facade-north.jpg';
+import contactImage from '../assets/images/real-selected/tdp-reception.jpg';
 
 interface DevelopmentsViewProps {
   initialCityFilter?: string;

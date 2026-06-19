@@ -4,12 +4,10 @@
  */
 
 import { Development, Initiative, BlogArticle, JobVacancy, Alliance } from './types';
-import veqOperaImage from './assets/images/veq_opera_1781741132258.jpg';
-import veqTorreDelPradoImage from './assets/images/veq_torredelprado_1781741156146.jpg';
-import veqCountryClubImage from './assets/images/veq_countryclub_1781741180731.jpg';
-import veqTravesseraImage from './assets/images/DJI_20250812195148_0006_D_Editada.png';
-import veqPaseoDeGraciaImage from './assets/images/veq_paseodegracia_1781741234147.jpg';
-import veqDevelopmentThumbImage from './assets/images/veq_development_thumb_1781739550936.jpg';
+import veqOperaImage from './assets/images/real-selected/tdp-facade-north.jpg';
+import veqTorreDelPradoImage from './assets/images/real-selected/tdp-hero.jpg';
+import veqTravesseraImage from './assets/images/real-selected/travessera-night.jpg';
+import veqDevelopmentThumbImage from './assets/images/real-selected/tdp-reception.jpg';
 import countryClubLobbyChandelierWide from './assets/images/countryclub-real/lobby-chandelier-wide.jpg';
 import countryClubLobbyLounge from './assets/images/countryclub-real/lobby-lounge.jpg';
 import countryClubPoolDeck from './assets/images/countryclub-real/pool-deck.jpg';
@@ -17,6 +15,8 @@ import countryClubLivingRoom from './assets/images/countryclub-real/living-room.
 import countryClubBalconyView from './assets/images/countryclub-real/balcony-view.jpg';
 import countryClubWalkInCloset from './assets/images/countryclub-real/walk-in-closet.jpg';
 import countryClubBedroomSuite from './assets/images/countryclub-real/bedroom-suite.jpg';
+const veqCountryClubImage = countryClubPoolDeck;
+const veqPaseoDeGraciaImage = countryClubBalconyView;
 
 export const DEVELOPMENTS_DATA: Development[] = [
   {

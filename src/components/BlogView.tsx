@@ -11,8 +11,8 @@ import { BlogArticle } from '../types';
 import ContactSection from './ContactSection';
 import PageHero from './PageHero';
 import SectionDivider from './SectionDivider';
-import heroImage from '../assets/images/FOTOS FACHADAS TDP SUR.png';
-import contactImage from '../assets/images/veq_jack_levy_1781739538027.jpg';
+import heroImage from '../assets/images/real-selected/travessera-night.jpg';
+import contactImage from '../assets/images/real-selected/tdp-reception.jpg';
 
 export default function BlogView() {
   const [searchTerm, setSearchTerm] = useState('');

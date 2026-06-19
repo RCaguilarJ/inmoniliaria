@@ -9,8 +9,8 @@ import { BLOG_DATA, DEVELOPMENTS_DATA } from '../data';
 import ContactSection from './ContactSection';
 import EditorialIcon, { EditorialIconName } from './EditorialIcon';
 import SectionDivider from './SectionDivider';
-import heroImage from '../assets/images/TDP Post foto 1 (1).png';
-import contactImage from '../assets/images/veq_jack_levy_1781739538027.jpg';
+import heroImage from '../assets/images/real-selected/tdp-hero.jpg';
+import contactImage from '../assets/images/real-selected/tdp-reception.jpg';
 
 interface HomeViewProps {
   onNavigate: (tabId: string) => void;

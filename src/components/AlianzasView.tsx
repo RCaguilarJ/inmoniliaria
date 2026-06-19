@@ -9,8 +9,8 @@ import ContactSection from './ContactSection';
 import EditorialIcon, { EditorialIconName } from './EditorialIcon';
 import PageHero from './PageHero';
 import SectionDivider from './SectionDivider';
-import heroImage from '../assets/images/veq_countryclub_1781741180731.jpg';
-import contactImage from '../assets/images/veq_jack_levy_1781739538027.jpg';
+import heroImage from '../assets/images/countryclub-real/balcony-view.jpg';
+import contactImage from '../assets/images/real-selected/tdp-reception.jpg';
 
 const services = [
   {

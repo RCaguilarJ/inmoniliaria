@@ -10,8 +10,8 @@ import ContactSection from './ContactSection';
 import EditorialIcon, { EditorialIconName } from './EditorialIcon';
 import PageHero from './PageHero';
 import SectionDivider from './SectionDivider';
-import heroImage from '../assets/images/veq_hero_towers_1781739523649.jpg';
-import profileImage from '../assets/images/veq_jack_levy_1781739538027.jpg';
+import heroImage from '../assets/images/real-selected/tdp-facade-north.jpg';
+import profileImage from '../assets/images/real-selected/tdp-reception.jpg';
 
 const differentiators = [
   {
